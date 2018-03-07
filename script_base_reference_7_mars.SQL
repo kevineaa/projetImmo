@@ -1,21 +1,13 @@
 /*
  ----------------------------------------------------------------------------
-<<<<<<< HEAD
              Génération d'une base de données pour
-=======
-             GÃ©nÃ©ration d'une base de donnÃ©es pour
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
                         SQL Server 2005
                        (1/3/2018 14:21:49)
  ----------------------------------------------------------------------------
      Nom de la base : Enfin
      Projet : 
      Auteur : CRIIUT
-<<<<<<< HEAD
      Date de dernière modification : 1/3/2018 14:21:23
-=======
-     Date de derniÃ¨re modification : 1/3/2018 14:21:23
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
  ----------------------------------------------------------------------------
 */
 
@@ -63,30 +55,17 @@ create table BIEN
      IDVENDEUR smallint  not null  ,
      SURFACE_HABITABLE int  not null  ,
      SURFACE_PARCELLE int  not null  ,
-<<<<<<< HEAD
      NB_PIÈCES int  not null  ,
-=======
-     NB_PIÃˆCES int  not null  ,
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
      NB_CHAMBRES int  not null  ,
      NB_SALLEDEBAIN int  not null  ,
      GARAGE bit  not null  ,
      CAVE bit  not null  ,
-<<<<<<< HEAD
      PRIX_SOUHAITÉ int  not null  ,
      ADRESSE_BIEN char(32)  not null  ,
      DATE_MISEENVENTE datetime  not null  ,
      STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RESERVE', 'SOUS-SEING')),
-     ZONE_DE_SAISIE char(32)  null  
-=======
-     PRIX_SOUHAITÃ‰ int  not null  ,
-     ADRESSE_BIEN char(32)  not null  ,
-     DATE_MISEENVENTE datetime  not null  ,
-     STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RESERVE', 'SOUS-SEING')),
+     ZONE_DE_SAISIE char(32)  null,  
      NB_VISITES smallint not null default 0 
-     ZONE_DE_SAISIE char(32)  null,
-   
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
      ,
      constraint PK_BIEN primary key (IDBIEN)
   ) 
@@ -123,15 +102,9 @@ create table COMMERCIAL
      IDCOMMERCIAL tinyint identity (1, 1)   ,
      NOM_COMMERCIAL char(32)  not null  ,
      PRENOM_COMMERCIAL char(32)  not null  ,
-<<<<<<< HEAD
      TÉLÉPHONE_FIXE_PRO int  not null  ,
      TÉLÉPHONE_MOBILE_PRO int  not null  ,
      TÉLÉPHONE_PERSONNEL int  null  ,
-=======
-     TÃ‰LÃ‰PHONE_FIXE_PRO int  not null  ,
-     TÃ‰LÃ‰PHONE_MOBILE_PRO int  not null  ,
-     TÃ‰LÃ‰PHONE_PERSONNEL int  null  ,
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
      EMAIL char(32)  not null  ,
      STATUT_COMMERCIAL char(32)  not null       CHECK (STATUT_COMMERCIAL in ('ACTIF', 'INACTIF'))
      ,
@@ -151,11 +124,7 @@ create table FICHE_DE_SOUHAITS
      IDACHETEUR smallint  not null  ,
      SURFACE_PARCELLE int  null  ,
      SURFACE_HABITABLE int  null  ,
-<<<<<<< HEAD
      NB_PIÈCE int  null  ,
-=======
-     NB_PIÃˆCE int  null  ,
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
      NB_CHAMBRES int  null  ,
      NB_SALLEDEBAIN int  null  ,
      GARAGE bit  null  ,
@@ -181,17 +150,10 @@ create table VENDEUR
      IDVENDEUR smallint identity (1, 1)   ,
      IDVILLE smallint  not null  ,
      NOM_VENDEUR char(32)  not null  ,
-<<<<<<< HEAD
      PRÉNOM_VENDEUR char(32)  not null  ,
      ADRESSE_VENDEUR char(32)  not null  ,
      TÉLÉPHONE_FIXE int  not null  ,
      TÉLÉPHONE_MOBILE int null  ,
-=======
-     PRÃ‰NOM_VENDEUR char(32)  not null  ,
-     ADRESSE_VENDEUR char(32)  not null  ,
-     TÃ‰LÃ‰PHONE_FIXE int  not null  ,
-     TÃ‰LÃ‰PHONE_MOBILE int null  ,
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
      EMAIL char(32)  not null  
      ,
      constraint PK_VENDEUR primary key (IDVENDEUR)
@@ -238,11 +200,7 @@ create table ACHETEUR
      PRENOM_ACHETEUR char(32)  not null  ,
      ADRESSE char(32)  not null  ,
      EMAIL char(32)  not null  ,
-<<<<<<< HEAD
      TÉLÉPHONE int  not null  
-=======
-     TÃ‰LÃ‰PHONE int  not null  
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
      ,
      constraint PK_ACHETEUR primary key (IDACHETEUR)
   ) 
@@ -371,8 +329,4 @@ go
  -----------------------------------------------------------------------------
                FIN DE GENERATION
  -----------------------------------------------------------------------------
-<<<<<<< HEAD
 */
-=======
-*/
->>>>>>> 77d7c608ce191496d8511c4c5e5bdb14a2524e61
