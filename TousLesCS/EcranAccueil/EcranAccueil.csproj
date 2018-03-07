@@ -100,6 +100,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RechercheBien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RechercheBien.Designer.cs">
+      <DependentUpon>RechercheBien.cs</DependentUpon>
+    </Compile>
     <Compile Include="VueCommerciaux.cs">
       <SubType>Form</SubType>
     </Compile>
