@@ -75,6 +75,7 @@ C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranA
 C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
 C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
 C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+<<<<<<< HEAD
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
@@ -91,3 +92,6 @@ C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+=======
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+>>>>>>> eb3d30a1490882fcf72c00a808a4b324cc540b1b
