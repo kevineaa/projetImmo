@@ -52,6 +52,7 @@
             this.button_rechercher_client.TabIndex = 1;
             this.button_rechercher_client.Text = "Rechercher un client";
             this.button_rechercher_client.UseVisualStyleBackColor = true;
+            this.button_rechercher_client.Click += new System.EventHandler(this.button_rechercher_client_Click);
             // 
             // FenetreChoix
             // 

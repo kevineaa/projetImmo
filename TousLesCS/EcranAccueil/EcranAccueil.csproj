@@ -68,6 +68,12 @@
     <Compile Include="AjoutClient.Designer.cs">
       <DependentUpon>AjoutClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="AjouterClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterClient.Designer.cs">
+      <DependentUpon>AjouterClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditionCommercial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreChoixBien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreChoixBien.Designer.cs">
+      <DependentUpon>FenetreChoixBien.cs</DependentUpon>
     </Compile>
     <Compile Include="FicheDeSouhaits.cs">
       <SubType>Form</SubType>
@@ -105,6 +117,12 @@
     </Compile>
     <Compile Include="RechercheBien.Designer.cs">
       <DependentUpon>RechercheBien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RechercherClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RechercherClient.Designer.cs">
+      <DependentUpon>RechercherClient.cs</DependentUpon>
     </Compile>
     <Compile Include="VueCommerciaux.cs">
       <SubType>Form</SubType>

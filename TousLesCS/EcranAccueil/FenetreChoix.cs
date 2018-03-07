@@ -19,9 +19,17 @@ namespace EcranAccueil
 
         private void button_ajouter_client_Click(object sender, EventArgs e)
         {
-            AjoutClient ajouClient = new AjoutClient();
-            ajouClient.Show();
+            AjoutClient ajoutClient = new AjoutClient();
+            ajoutClient.Show();
             this.Hide();
+        }
+
+        private void button_rechercher_client_Click(object sender, EventArgs e)
+        {
+            RechercherClient rechercherClient = new RechercherClient();
+            rechercherClient.Show();
+            this.Hide();
+
         }
     }
 }
