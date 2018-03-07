@@ -75,3 +75,4 @@ C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranA
 C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
 C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
 C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
