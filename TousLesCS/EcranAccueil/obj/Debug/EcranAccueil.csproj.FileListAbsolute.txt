@@ -56,3 +56,6 @@ C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet
 C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
 C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet\Interfaces\EcranAccueil\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
