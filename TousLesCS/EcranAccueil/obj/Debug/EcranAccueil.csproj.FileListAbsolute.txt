@@ -59,3 +59,19 @@ C:\Users\Vincent\Desktop\Cours\Gestion de Projet\Projet tuteuré ImmoBily\Projet
 C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
 C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
 C:\Users\Vincent\Desktop\Depot projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe.config
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.exe
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\bin\Debug\EcranAccueil.pdb
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.EditionCommercial.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FenetreChoix.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Accueil.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.FicheDeSouhaits.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\FicheDuBien.FicheDuBien.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Properties.Resources.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.exe
+C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.pdb

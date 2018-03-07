@@ -16,5 +16,12 @@ namespace EcranAccueil
         {
             InitializeComponent();
         }
+
+        private void button_ajouter_client_Click(object sender, EventArgs e)
+        {
+            AjoutClient ajouClient = new AjoutClient();
+            ajouClient.Show();
+            this.Hide();
+        }
     }
 }

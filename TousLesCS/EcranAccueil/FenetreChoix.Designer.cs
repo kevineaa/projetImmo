@@ -34,29 +34,33 @@
             // 
             // button_ajouter_client
             // 
-            this.button_ajouter_client.Location = new System.Drawing.Point(59, 40);
+            this.button_ajouter_client.Location = new System.Drawing.Point(79, 49);
+            this.button_ajouter_client.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_ajouter_client.Name = "button_ajouter_client";
-            this.button_ajouter_client.Size = new System.Drawing.Size(120, 23);
+            this.button_ajouter_client.Size = new System.Drawing.Size(160, 28);
             this.button_ajouter_client.TabIndex = 0;
             this.button_ajouter_client.Text = "Ajouter un client";
             this.button_ajouter_client.UseVisualStyleBackColor = true;
+            this.button_ajouter_client.Click += new System.EventHandler(this.button_ajouter_client_Click);
             // 
             // button_rechercher_client
             // 
-            this.button_rechercher_client.Location = new System.Drawing.Point(59, 99);
+            this.button_rechercher_client.Location = new System.Drawing.Point(79, 122);
+            this.button_rechercher_client.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_rechercher_client.Name = "button_rechercher_client";
-            this.button_rechercher_client.Size = new System.Drawing.Size(120, 23);
+            this.button_rechercher_client.Size = new System.Drawing.Size(160, 28);
             this.button_rechercher_client.TabIndex = 1;
             this.button_rechercher_client.Text = "Rechercher un client";
             this.button_rechercher_client.UseVisualStyleBackColor = true;
             // 
             // FenetreChoix
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 173);
+            this.ClientSize = new System.Drawing.Size(312, 213);
             this.Controls.Add(this.button_rechercher_client);
             this.Controls.Add(this.button_ajouter_client);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FenetreChoix";
             this.Text = "FenetreChoix";
             this.ResumeLayout(false);
