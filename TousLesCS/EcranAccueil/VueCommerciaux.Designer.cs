@@ -50,13 +50,13 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.suppr_commercial = new System.Windows.Forms.Button();
+            this.ajout_commercial = new System.Windows.Forms.Button();
+            this.edition_commercial = new System.Windows.Forms.Button();
+            this.retour_accueil = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.actif_commercial = new System.Windows.Forms.Button();
+            this.ancien_commercial = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -259,46 +259,48 @@
             this.label13.TabIndex = 24;
             this.label13.Text = "Téléphone personnel";
             // 
-            // button3
+            // suppr_commercial
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.Location = new System.Drawing.Point(570, 436);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(166, 29);
-            this.button3.TabIndex = 45;
-            this.button3.Text = "Supprimer le commercial";
-            this.button3.UseVisualStyleBackColor = true;
+            this.suppr_commercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.suppr_commercial.Location = new System.Drawing.Point(570, 436);
+            this.suppr_commercial.Name = "suppr_commercial";
+            this.suppr_commercial.Size = new System.Drawing.Size(166, 29);
+            this.suppr_commercial.TabIndex = 45;
+            this.suppr_commercial.Text = "Supprimer le commercial";
+            this.suppr_commercial.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // ajout_commercial
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(570, 352);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 29);
-            this.button1.TabIndex = 46;
-            this.button1.Text = "Ajouter un nouveau commercial";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ajout_commercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ajout_commercial.Location = new System.Drawing.Point(570, 352);
+            this.ajout_commercial.Name = "ajout_commercial";
+            this.ajout_commercial.Size = new System.Drawing.Size(166, 29);
+            this.ajout_commercial.TabIndex = 46;
+            this.ajout_commercial.Text = "Ajouter un nouveau commercial";
+            this.ajout_commercial.UseVisualStyleBackColor = true;
+            this.ajout_commercial.Click += new System.EventHandler(this.ajout_commercial_Click);
             // 
-            // button2
+            // edition_commercial
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Location = new System.Drawing.Point(570, 394);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 29);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "Editer le commercial";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.edition_commercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.edition_commercial.Location = new System.Drawing.Point(570, 394);
+            this.edition_commercial.Name = "edition_commercial";
+            this.edition_commercial.Size = new System.Drawing.Size(166, 29);
+            this.edition_commercial.TabIndex = 47;
+            this.edition_commercial.Text = "Editer le commercial";
+            this.edition_commercial.UseVisualStyleBackColor = true;
+            this.edition_commercial.Click += new System.EventHandler(this.edition_commercial_Click);
             // 
-            // button4
+            // retour_accueil
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button4.Location = new System.Drawing.Point(570, 520);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 29);
-            this.button4.TabIndex = 51;
-            this.button4.Text = "Retour Accueil";
-            this.button4.UseVisualStyleBackColor = true;
+            this.retour_accueil.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.retour_accueil.Location = new System.Drawing.Point(570, 520);
+            this.retour_accueil.Name = "retour_accueil";
+            this.retour_accueil.Size = new System.Drawing.Size(166, 29);
+            this.retour_accueil.TabIndex = 51;
+            this.retour_accueil.Text = "Retour Accueil";
+            this.retour_accueil.UseVisualStyleBackColor = true;
+            this.retour_accueil.Click += new System.EventHandler(this.retour_accueil_Click);
             // 
             // label15
             // 
@@ -310,25 +312,27 @@
             this.label15.TabIndex = 52;
             this.label15.Text = "COMMERCIAUX";
             // 
-            // button5
+            // actif_commercial
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button5.Location = new System.Drawing.Point(69, 269);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 23);
-            this.button5.TabIndex = 53;
-            this.button5.Text = "ACTIF";
-            this.button5.UseVisualStyleBackColor = true;
+            this.actif_commercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.actif_commercial.Location = new System.Drawing.Point(69, 269);
+            this.actif_commercial.Name = "actif_commercial";
+            this.actif_commercial.Size = new System.Drawing.Size(123, 23);
+            this.actif_commercial.TabIndex = 53;
+            this.actif_commercial.Text = "ACTIF";
+            this.actif_commercial.UseVisualStyleBackColor = true;
+            this.actif_commercial.Click += new System.EventHandler(this.actif_commercial_Click);
             // 
-            // button6
+            // ancien_commercial
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button6.Location = new System.Drawing.Point(198, 269);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(123, 23);
-            this.button6.TabIndex = 54;
-            this.button6.Text = "ANCIEN EMPLOYE";
-            this.button6.UseVisualStyleBackColor = true;
+            this.ancien_commercial.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ancien_commercial.Location = new System.Drawing.Point(198, 269);
+            this.ancien_commercial.Name = "ancien_commercial";
+            this.ancien_commercial.Size = new System.Drawing.Size(123, 23);
+            this.ancien_commercial.TabIndex = 54;
+            this.ancien_commercial.Text = "ANCIEN EMPLOYE";
+            this.ancien_commercial.UseVisualStyleBackColor = true;
+            this.ancien_commercial.Click += new System.EventHandler(this.ancien_commercial_Click);
             // 
             // textBox10
             // 
@@ -381,13 +385,13 @@
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ancien_commercial);
+            this.Controls.Add(this.actif_commercial);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.retour_accueil);
+            this.Controls.Add(this.edition_commercial);
+            this.Controls.Add(this.ajout_commercial);
+            this.Controls.Add(this.suppr_commercial);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox7);
@@ -441,13 +445,13 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button suppr_commercial;
+        private System.Windows.Forms.Button ajout_commercial;
+        private System.Windows.Forms.Button edition_commercial;
+        private System.Windows.Forms.Button retour_accueil;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button actif_commercial;
+        private System.Windows.Forms.Button ancien_commercial;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label14;

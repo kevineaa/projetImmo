@@ -40,5 +40,10 @@ namespace EcranAccueil
             VueCommerciaux commerciaux = new VueCommerciaux();
             commerciaux.Show();
         }
+
+        private void button_catalogue_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

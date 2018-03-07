@@ -17,8 +17,29 @@ namespace EcranAccueil
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void edition_commercial_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void actif_commercial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ancien_commercial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void retour_accueil_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ajout_commercial_Click(object sender, EventArgs e)
+        {
+            this.Hide();
             EditionCommercial edition = new EditionCommercial();
             edition.Show();
         }

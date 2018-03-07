@@ -92,12 +92,6 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="FenetreChoixBien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FenetreChoixBien.Designer.cs">
-      <DependentUpon>FenetreChoixBien.cs</DependentUpon>
-    </Compile>
     <Compile Include="FicheDeSouhaits.cs">
       <SubType>Form</SubType>
     </Compile>
