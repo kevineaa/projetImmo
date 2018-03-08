@@ -152,6 +152,8 @@ create table VENDEUR
      NOM_VENDEUR char(32)  not null  ,
      PR�NOM_VENDEUR char(32)  not null  ,
      ADRESSE_VENDEUR char(32)  not null  ,
+     CODE_POSTAL_VENDEUR int not null ,
+     VILLE_VENDEUR char(32) not null,
      T�L�PHONE_FIXE int  not null  ,
      T�L�PHONE_MOBILE int null  ,
      EMAIL char(32)  not null  

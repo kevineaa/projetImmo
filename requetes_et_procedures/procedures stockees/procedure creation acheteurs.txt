@@ -2,7 +2,7 @@ use Enfin
 
 DELETE from ACHETEUR
 
-INSERT INTO ACHETEUR(IDCOMMERCIAL, IDVILLE, NOM_ACHETEUR, PRENOM_ACHETEUR, ADRESSE, EMAIL, TÉLÉPHONE)
+INSERT INTO ACHETEUR(IDCOMMERCIAL, IDVILLE, NOM_ACHETEUR, PRENOM_ACHETEUR, ADRESSE, EMAIL, TÃ‰LÃ‰PHONE)
 VALUES(
 (select IDCommercial from COMMERCIAL where NOM_COMMERCIAL = 'Ries'),
 (select IDVille from VILLE where NOM_VILLE = 'Bordeaux'),
@@ -10,17 +10,10 @@ VALUES(
 
 (
 (select IDCommercial from COMMERCIAL where NOM_COMMERCIAL = 'Picart'),
-(select IDVille from VILLE where NOM_VILLE = 'Mérignac'),
-'Fosse', 'Stephane', '7 rue des dérivées partielles', 'pasTropDur@DS_Facile', '088886789')
+(select IDVille from VILLE where NOM_VILLE = 'MÃ©rignac'),
+'Fosse', 'Stephane', '7 rue des dÃ©rivÃ©es partielles', 'pasTropDur@DS_Facile', '088886789'),
 
-
-
-
-
-
-
-
-
-
-
-
+(
+(select IDCommercial from COMMERCIAL where NOM_COMMERCIAL = 'Ries'),
+(select IDVille from VILLE where NOM_VILLE = 'Talence'),
+'Fossa', 'Stephano', '7 rue des probabilitÃ©s discrÃ¨tes', 'fossa_stephano@prof.fr', '0745981245')
