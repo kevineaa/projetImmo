@@ -28,22 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_titre_immobily = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accueil));
             this.button_catalogue = new System.Windows.Forms.Button();
             this.button_ajouter_bien_catalogue = new System.Windows.Forms.Button();
             this.button_gestion_des_clients = new System.Windows.Forms.Button();
             this.button_gestion_des_commerciaux = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label_titre_immobily
-            // 
-            this.label_titre_immobily.AutoSize = true;
-            this.label_titre_immobily.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_titre_immobily.Location = new System.Drawing.Point(57, 34);
-            this.label_titre_immobily.Name = "label_titre_immobily";
-            this.label_titre_immobily.Size = new System.Drawing.Size(123, 25);
-            this.label_titre_immobily.TabIndex = 0;
-            this.label_titre_immobily.Text = "IMMOBILY";
             // 
             // button_catalogue
             // 
@@ -88,30 +80,38 @@
             this.button_gestion_des_commerciaux.UseVisualStyleBackColor = true;
             this.button_gestion_des_commerciaux.Click += new System.EventHandler(this.button_gestion_des_commerciaux_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(62, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(257, 122);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(487, 254);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button_gestion_des_commerciaux);
             this.Controls.Add(this.button_gestion_des_clients);
             this.Controls.Add(this.button_ajouter_bien_catalogue);
             this.Controls.Add(this.button_catalogue);
-            this.Controls.Add(this.label_titre_immobily);
             this.Name = "Accueil";
             this.Text = "Accueil";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label_titre_immobily;
         private System.Windows.Forms.Button button_catalogue;
         private System.Windows.Forms.Button button_ajouter_bien_catalogue;
         private System.Windows.Forms.Button button_gestion_des_clients;
         private System.Windows.Forms.Button button_gestion_des_commerciaux;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

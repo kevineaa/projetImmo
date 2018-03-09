@@ -97,3 +97,4 @@ C:\Users\kevin\Desktop\projet\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranA
 >>>>>>> eb3d30a1490882fcf72c00a808a4b324cc540b1b
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.Visites_bien.resources
 C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
+C:\Users\Léa\Documents\GitHub\ProjetImmo\projetImmo\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.CatalogueBiens.resources
