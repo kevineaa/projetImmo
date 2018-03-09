@@ -43,7 +43,8 @@ namespace EcranAccueil
 
         private void button_catalogue_Click(object sender, EventArgs e)
         {
-
+            CatalogueBiens catalogue = new CatalogueBiens();
+            catalogue.ShowDialog();
         }
     }
 }
