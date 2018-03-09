@@ -122,7 +122,7 @@ create table FICHE_DE_SOUHAITS
   (
      IDFICHESOUHAITS smallint identity (1, 1)   ,
      IDACHETEUR smallint  not null  ,
-     VILLE char(32), null,
+     VILLE char(32) null,
      SURFACE_PARCELLE int  null  ,
      SURFACE_HABITABLE int  null  ,
      NB_PIÈCE int  null  ,
