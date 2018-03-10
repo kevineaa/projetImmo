@@ -1,38 +1,45 @@
 Hello,
 
-Si vous voulez rajoutez la table des villes/code postaux sur votre BDD locale, voilà la marche à suivre :
+Si vous voulez rajoutez la table des villes/code postaux sur votre BDD locale, voilÃ  la marche Ã  suivre :
+PrÃ©-requis :
 
-- Utilisez le fichier VILLES.csv que Damien a filé sur Discord il y a quelques jours (je l'ai rajouté aussi sur Git)
+- Utilisez le fichier VILLES.csv que Damien a filÃ© sur Discord il y a quelques jours (je l'ai rajoutÃ© aussi sur Git)
+- RecrÃ©ez la base avec le script base rÃ©fÃ©rence 10 mars ! (j'ai du faire quelques ajustements sur les types de la table VILLE)
 
-- Depuis SSMS, faites un clic droit sur le nom de la base (Enfin), allez dans le menu Tâches, puis "importer des données"
-- Dans l'assistant d'import/export, au moment du choix de la source, sélectionnez "Source du fichier plat", allez chercher 
-le fichier CSV dans son répertoire.
-- Pour le format, dans le 1er menu "Général" (plusieurs menus sur la gauche), 
-en séparateur de lignes d'en tête, mettez juste : " 
-- Décohez "noms de colonnes dans la 1ère ligne de données",
+Ensuite :
+
+- Depuis SSMS, faites un clic droit sur le nom de la base (Enfin), allez dans le menu TÃ¢ches, puis "importer des donnÃ©es"
+- Dans l'assistant d'import/export, au moment du choix de la source, sÃ©lectionnez "Source du fichier plat", allez chercher 
+le fichier CSV dans son rÃ©pertoire.
+- Pour le format, dans le 1er menu "GÃ©nÃ©ral" (plusieurs menus sur la gauche), 
+en sÃ©parateur de lignes d'en tÃªte, mettez juste : " 
+- DÃ©cohez "noms de colonnes dans la 1Ã¨re ligne de donnÃ©es",
 - Menu "Colonnes", rien de particulier
-- Menu "Avancé", cliquez sur "suggérer les types" > Dans nombre de lignes, mettre 37200 (le fichier en fait 37177)
-- Décochez "suggérer le plus petit type de real", décochez "identifiez les colonnes booléennes" > OK
-Cette opération identifie coorectement le type de chaque colonne.
-- Pour le choix de la destination, sélectionnez SQL Server Native Client 11.0
-- Choisissez ensuite le même type d'authentification que celle que vous avez utilisez pour SSMS
-- Sélectionnez dans le dernier champ la base "Enfin", cliquez sur suivant
-- Là l'assistant propose de créer une nouvelle table nommée "[dbo].[VILLES]", la table présente dans notre base s'appelle
-[VILLE], donc normalement pas de conflit. Mais vous pouvez au préalable supprimer la table VILLE pour en être sûr.
+- Menu "AvancÃ©", cliquez sur "suggÃ©rer les types" > Dans nombre de lignes, mettre 37200 (le fichier en fait 37177)
+- DÃ©cochez "suggÃ©rer le plus petit type de real", dÃ©cochez "identifiez les colonnes boolÃ©ennes" > OK
+Cette opÃ©ration identifie coorectement le type de chaque colonne.
+- Pour le choix de la destination, sÃ©lectionnez SQL Server Native Client 11.0
+- Choisissez ensuite le mÃªme type d'authentification que celle que vous avez utilisez pour SSMS
+- SÃ©lectionnez dans le dernier champ la base "Enfin", cliquez sur suivant
+- LÃ  l'assistant propose de crÃ©er une nouvelle table nommÃ©e "[dbo].[VILLES]", la table prÃ©sente dans notre base s'appelle
+[VILLE], donc cliquez sur le menu dÃ©roulant et sÃ©lectionnez bien la table [dbo].[VILLE] (sans S)
 
-Remarque : si on sélectionne la table [VILLE] déjà existante dans notre base, il y a un souci avec la colonne clé primaire
-qui est en lecture seule (du à l'auto-incrémentation que nous avons mis en place sur toutes les clés primaires
-avec le modèle MCD)
+- Cliquez sur "Modifier les mappages", le choix "ajouter des lignes..." doit dÃ©jÃ  Ãªtre sÃ©lectionnÃ©.
+- IMPORTANT : Cochez "Activer l'insertion d'identitÃ©" 
 
-- Cliquez sur suivant, la case "éxécutez immédiatement" doit rester cochée, clique à nouveau sur suivant.
+Vous devez avoir une fenÃªtre vous montrant que les 3 colonnes seront bien implÃ©mentÃ©es avec des petits logos verts
+(s'il y'a des panneaux oranges, c'est qu'il y aura un problÃ¨me d'ajout Ã  la fin)
+- Cliquez sur suivant, la case "Ã©xÃ©cutez immÃ©diatement" doit rester cochÃ©e, clique Ã  nouveau sur suivant.
 - Cliquez sur "Terminer"
 
-A la fin de l'opération, l'assistant doit vous indiquer "37177 lignes transférées".
+A la fin de l'opÃ©ration, l'assistant doit vous indiquer "37177 lignes transfÃ©rÃ©es".
 
-Le problème avec l'ajout de cette nouvelle table [VILLES] est qu'elle ne répond plus à certains critères des autres tables
-(ACHETEUR, VENDEUR, etc)
+Et vÃ©rifiez ensuite avec un petit :
 
-Je pense qu'il faudra modifier le MCD pour faire en sorte de pouvoir remplir correctement la table "VILLE" déjà existante.
+USE Enfin
+Select * from VILLE
+
+
 
 
 
