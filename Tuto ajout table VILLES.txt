@@ -1,0 +1,38 @@
+Hello,
+
+Si vous voulez rajoutez la table des villes/code postaux sur votre BDD locale, voilà la marche à suivre :
+
+- Utilisez le fichier VILLES.csv que Damien a filé sur Discord il y a quelques jours (je l'ai rajouté aussi sur Git)
+
+- Depuis SSMS, faites un clic droit sur le nom de la base (Enfin), allez dans le menu Tâches, puis "importer des données"
+- Dans l'assistant d'import/export, au moment du choix de la source, sélectionnez "Source du fichier plat", allez chercher 
+le fichier CSV dans son répertoire.
+- Pour le format, dans le 1er menu "Général" (plusieurs menus sur la gauche), 
+en séparateur de lignes d'en tête, mettez juste : " 
+- Décohez "noms de colonnes dans la 1ère ligne de données",
+- Menu "Colonnes", rien de particulier
+- Menu "Avancé", cliquez sur "suggérer les types" > Dans nombre de lignes, mettre 37200 (le fichier en fait 37177)
+- Décochez "suggérer le plus petit type de real", décochez "identifiez les colonnes booléennes" > OK
+Cette opération identifie coorectement le type de chaque colonne.
+- Pour le choix de la destination, sélectionnez SQL Server Native Client 11.0
+- Choisissez ensuite le même type d'authentification que celle que vous avez utilisez pour SSMS
+- Sélectionnez dans le dernier champ la base "Enfin", cliquez sur suivant
+- Là l'assistant propose de créer une nouvelle table nommée "[dbo].[VILLES]", la table présente dans notre base s'appelle
+[VILLE], donc normalement pas de conflit. Mais vous pouvez au préalable supprimer la table VILLE pour en être sûr.
+
+Remarque : si on sélectionne la table [VILLE] déjà existante dans notre base, il y a un souci avec la colonne clé primaire
+qui est en lecture seule (du à l'auto-incrémentation que nous avons mis en place sur toutes les clés primaires
+avec le modèle MCD)
+
+- Cliquez sur suivant, la case "éxécutez immédiatement" doit rester cochée, clique à nouveau sur suivant.
+- Cliquez sur "Terminer"
+
+A la fin de l'opération, l'assistant doit vous indiquer "37177 lignes transférées".
+
+Le problème avec l'ajout de cette nouvelle table [VILLES] est qu'elle ne répond plus à certains critères des autres tables
+(ACHETEUR, VENDEUR, etc)
+
+Je pense qu'il faudra modifier le MCD pour faire en sorte de pouvoir remplir correctement la table "VILLE" déjà existante.
+
+
+
