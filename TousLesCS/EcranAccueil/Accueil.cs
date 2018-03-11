@@ -46,5 +46,10 @@ namespace EcranAccueil
             CatalogueBiens catalogue = new CatalogueBiens();
             catalogue.ShowDialog();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("BIENVENUE SUR L'APPLICATION DE GESTION \n DE BIENS IMMOBILIERS IMMOBILLY !");
+        }
     }
 }

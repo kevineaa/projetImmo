@@ -39,7 +39,7 @@ namespace EcranAccueil
 
         private void ajout_commercial_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             EditionCommercial edition = new EditionCommercial();
             edition.Show();
         }
