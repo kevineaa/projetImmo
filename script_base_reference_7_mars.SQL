@@ -1,4 +1,4 @@
-/*
+﻿/*
  ----------------------------------------------------------------------------
              Génération d'une base de données pour
                         SQL Server 2005
@@ -64,9 +64,8 @@ create table BIEN
      ADRESSE_BIEN char(32)  not null  ,
      DATE_MISEENVENTE datetime  not null  ,
      STATUT char(32)  not null       CHECK (STATUT in ('DISPONIBLE', 'VENDU', 'RESERVE', 'SOUS-SEING')),
+     ZONE_DE_SAISIE char(32)  null,  
      NB_VISITES smallint not null default 0 
-     ZONE_DE_SAISIE char(32)  null,
-   
      ,
      constraint PK_BIEN primary key (IDBIEN)
   ) 
@@ -123,6 +122,7 @@ create table FICHE_DE_SOUHAITS
   (
      IDFICHESOUHAITS smallint identity (1, 1)   ,
      IDACHETEUR smallint  not null  ,
+     VILLE char(32) null,
      SURFACE_PARCELLE int  null  ,
      SURFACE_HABITABLE int  null  ,
      NB_PIÈCE int  null  ,
