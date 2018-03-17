@@ -187,10 +187,15 @@ namespace EcranAccueil
             listBox2.Items.Clear();
           
         }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void actif_CheckedChanged(object sender, EventArgs e)
         {
-           // if(ch)
+
+        }
+
+        private void inactif_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

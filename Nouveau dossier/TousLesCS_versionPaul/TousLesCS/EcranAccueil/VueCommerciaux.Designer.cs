@@ -350,6 +350,7 @@
             this.actif.TabStop = true;
             this.actif.Text = "actif";
             this.actif.UseVisualStyleBackColor = true;
+            this.actif.CheckedChanged += new System.EventHandler(this.actif_CheckedChanged);
             // 
             // inactif
             // 
@@ -361,6 +362,7 @@
             this.inactif.TabStop = true;
             this.inactif.Text = "inactif";
             this.inactif.UseVisualStyleBackColor = true;
+            this.inactif.CheckedChanged += new System.EventHandler(this.inactif_CheckedChanged);
             // 
             // VueCommerciaux
             // 
