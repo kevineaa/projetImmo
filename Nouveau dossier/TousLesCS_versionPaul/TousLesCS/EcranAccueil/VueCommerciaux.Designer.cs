@@ -55,8 +55,6 @@
             this.telephonePerso = new System.Windows.Forms.TextBox();
             this.clear = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.actif = new System.Windows.Forms.RadioButton();
-            this.inactif = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -340,37 +338,11 @@
             this.label6.TabIndex = 59;
             this.label6.Text = "Status";
             // 
-            // actif
-            // 
-            this.actif.AutoSize = true;
-            this.actif.Location = new System.Drawing.Point(515, 607);
-            this.actif.Name = "actif";
-            this.actif.Size = new System.Drawing.Size(55, 21);
-            this.actif.TabIndex = 60;
-            this.actif.TabStop = true;
-            this.actif.Text = "actif";
-            this.actif.UseVisualStyleBackColor = true;
-            this.actif.CheckedChanged += new System.EventHandler(this.actif_CheckedChanged);
-            // 
-            // inactif
-            // 
-            this.inactif.AutoSize = true;
-            this.inactif.Location = new System.Drawing.Point(618, 609);
-            this.inactif.Name = "inactif";
-            this.inactif.Size = new System.Drawing.Size(66, 21);
-            this.inactif.TabIndex = 61;
-            this.inactif.TabStop = true;
-            this.inactif.Text = "inactif";
-            this.inactif.UseVisualStyleBackColor = true;
-            this.inactif.CheckedChanged += new System.EventHandler(this.inactif_CheckedChanged);
-            // 
             // VueCommerciaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1292, 690);
-            this.Controls.Add(this.inactif);
-            this.Controls.Add(this.actif);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.telephonePerso);
@@ -436,7 +408,5 @@
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.RadioButton actif;
-        private System.Windows.Forms.RadioButton inactif;
     }
 }

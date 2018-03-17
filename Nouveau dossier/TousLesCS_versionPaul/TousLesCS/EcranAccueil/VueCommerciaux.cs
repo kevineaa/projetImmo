@@ -48,13 +48,8 @@ namespace EcranAccueil
             {
                 commercial.ACHETEUR.Add(r);
             }
-
-            if (inactif.Focus())
-            {
+            
                 commercial.STATUT_COMMERCIAL = "inactif";
-            }else if (actif.Focus()) {
-                commercial.STATUT_COMMERCIAL = "actif";
-            }
             //commercial.ACHETEUR = c.ACHETEUR;
 
             enfin.COMMERCIAL.Add(commercial);
@@ -154,14 +149,7 @@ namespace EcranAccueil
                 telephonePerso.Text = commercial.TÉLÉPHONE_PERSONNEL.ToString();
                 email.Text = commercial.EMAIL;
                 // commercial.STATUT_COMMERCIAL = "actif";
-                if (commercial.STATUT_COMMERCIAL == "inactif")
-                {
-                     inactif.Checked=true;
-                }
-                 if (commercial.STATUT_COMMERCIAL == "actif")
-                {
-                        actif.Checked = true;
-                }
+               
 
                 foreach (ACHETEUR acheteur in commercial.ACHETEUR.ToList())
                 {
@@ -188,14 +176,5 @@ namespace EcranAccueil
           
         }
         
-        private void actif_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void inactif_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
