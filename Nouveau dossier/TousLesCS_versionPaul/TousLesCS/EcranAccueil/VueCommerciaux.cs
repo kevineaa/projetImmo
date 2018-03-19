@@ -13,6 +13,8 @@ namespace EcranAccueil
 {
     public partial class VueCommerciaux : Form
     {
+        string status = "ACTIF";
+
         public EnfinEntities2 enfin = new EnfinEntities2();
 
         public VueCommerciaux()
@@ -21,41 +23,72 @@ namespace EcranAccueil
 
               var nomCommerciaux = (from c in enfin.COMMERCIAL
                                     select c.NOM_COMMERCIAL);
+
+            var stat = (from c in enfin.COMMERCIAL
+                                  select c.STATUT_COMMERCIAL);
             foreach (string nom in nomCommerciaux)
             {
              listBox1.Items.Add(nom);
-            }
 
-            nom.ReadOnly = true;
+            }
         }
 
         private void editerCommercial_Click(object sender, EventArgs e)
         {
-            COMMERCIAL c = (from x in enfin.COMMERCIAL
-                            where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                            select x).First();
-            COMMERCIAL commercial = new COMMERCIAL();
-
-            commercial.NOM_COMMERCIAL = nom.Text;
-            commercial.PRENOM_COMMERCIAL = prenom.Text;
-            commercial.EMAIL = email.Text;
-            commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
-            commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
-            commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
-            commercial.EMAIL = email.Text;
-            commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
-            foreach(ACHETEUR r in c.ACHETEUR)
+            listBox1.Items.Clear();
+          //  nom.Text = "";
+            prenom.Text = "";
+            email.Text = "";
+            portablePro.Text = "";
+            fixePro.Text = "";
+            telephonePerso.Text = "";
+            email.Text = "";
+            listBox2.Items.Clear();
+            if (nom.Text != "")
             {
-                commercial.ACHETEUR.Add(r);
+
+                IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                                            where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                            select x);
+
+                //
+                foreach (COMMERCIAL commercial in c)
+                {
+                    listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+                }
+
             }
-            
-                commercial.STATUT_COMMERCIAL = "inactif";
-            //commercial.ACHETEUR = c.ACHETEUR;
+            else
+            {
 
-            enfin.COMMERCIAL.Add(commercial);
-            enfin.COMMERCIAL.Remove(c);
+                //IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                //                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                //                        select x);
 
-            enfin.SaveChanges();
+                var nomCommerciaux = (from c in enfin.COMMERCIAL
+                                      select c.NOM_COMMERCIAL);
+
+
+                foreach (string nom in nomCommerciaux)
+                {
+                    listBox1.Items.Add(nom);
+                }
+                Refresh();
+            }
+
+            if (listBox1.Items.Count == 0)
+            {
+                actif.Checked = true;
+                actif.Enabled = false;
+                inactif.Checked = false;
+                inactif.Enabled = false;
+            }
+            else
+            {
+                actif.Enabled = true;
+                inactif.Enabled = true;
+            }
+
 
         }
 
@@ -69,78 +102,165 @@ namespace EcranAccueil
                             select x).First();
             enfin.COMMERCIAL.Remove(c);
             enfin.SaveChanges();
+
+            nom.Text = "";
+            prenom.Text = "";
+            email.Text = "";
+            portablePro.Text = "";
+            fixePro.Text = "";
+            telephonePerso.Text = "";
+            email.Text = "";
+            listBox2.Items.Clear();
         }
 
         private void ajoutCommercial_Click(object sender, EventArgs e)
         {
-            
-            COMMERCIAL commercial = new COMMERCIAL();
-            commercial.NOM_COMMERCIAL = nom.Text;
-            commercial.PRENOM_COMMERCIAL = prenom.Text;
-            commercial.EMAIL = email.Text;
-            commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
-            commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
-            commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
-            commercial.EMAIL = email.Text;
-            commercial.STATUT_COMMERCIAL = "actif";
-            enfin.COMMERCIAL.Add(commercial);
-            enfin.SaveChanges();
+            IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
+                                        where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                        select x);
+
+
+            /*  foreach (string nom in nomCommerciaux)
+              {
+                  listBox1.Items.Add(nom);
+              }
+              Refresh();*/
+            if (ca.Count() == 0)
+            {
+                actif.Checked = true;
+                actif.Enabled = false;
+                inactif.Checked = false;
+                inactif.Enabled = false;
+                status = "ACTIF";
+                COMMERCIAL commercial = new COMMERCIAL();
+                commercial.NOM_COMMERCIAL = nom.Text;
+                commercial.PRENOM_COMMERCIAL = prenom.Text;
+                commercial.EMAIL = email.Text;
+                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
+                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
+                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
+                commercial.EMAIL = email.Text;
+                commercial.STATUT_COMMERCIAL = status;
+
+                enfin.COMMERCIAL.Add(commercial);
+                enfin.SaveChanges();
+            }
+            else
+            {
+                COMMERCIAL c = (from x in enfin.COMMERCIAL
+                                where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                select x).First();
+                actif.Enabled = true;
+                inactif.Enabled = true;
+                status = c.STATUT_COMMERCIAL;
+
+
+                COMMERCIAL commercial = new COMMERCIAL();
+
+                commercial.NOM_COMMERCIAL = nom.Text;
+                commercial.PRENOM_COMMERCIAL = prenom.Text;
+                commercial.EMAIL = email.Text;
+                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
+                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
+                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
+                commercial.EMAIL = email.Text;
+                commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
+
+                if (commercial.STATUT_COMMERCIAL.ToLowerInvariant() == "actif")
+                {
+                    actif.Checked = true;
+                    inactif.Checked = false;
+
+                }
+                else if (commercial.STATUT_COMMERCIAL == "INACTIF"|| commercial.STATUT_COMMERCIAL == "inactif")
+                {
+                    actif.Checked = false;
+                    inactif.Checked = true;
+                }
+                foreach (ACHETEUR r in c.ACHETEUR)
+                {
+                    commercial.ACHETEUR.Add(r);
+                }
+
+                commercial.STATUT_COMMERCIAL = status;
+                //commercial.ACHETEUR = c.ACHETEUR;
+                enfin.COMMERCIAL.Add(commercial);
+                enfin.COMMERCIAL.Remove(c);
+                enfin.SaveChanges();
+            }
         }
 
         private void nom_TextChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            /*      listBox1.Items.Clear();
 
-            if (nom.Text != "")
-            {
+                  if (nom.Text != "")
+                  {
 
-                 IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                                 where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                 select x);
+                       IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                                       where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                       select x);
 
-                //
-                foreach (COMMERCIAL commercial in c)
-                {
-                    listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
-                 }
+                      //
+                      foreach (COMMERCIAL commercial in c)
+                      {
+                          listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+                       }
+
+                  }
+                  else
+                  {
+
+                      //IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                        //                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                          //                        select x);
+
+                      var nomCommerciaux = (from c in enfin.COMMERCIAL
+                                           select c.NOM_COMMERCIAL);
 
 
+                      foreach (string nom in nomCommerciaux)
+                      {
+                          listBox1.Items.Add(nom);
+                      }
+                      Refresh();
+                  }
 
-               /* 
-                * var c = (from x in enfin.COMMERCIAL
-                         where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-
-                         select x.NOM_COMMERCIAL);
-                foreach (string nom in c)
-                {
-                    listBox1.Items.Add(nom);
-                }
-                */
-                Refresh();
-
-            }
-            else
-            {
-
-                var nomCommerciaux = (from c in enfin.COMMERCIAL
-                                      select c.NOM_COMMERCIAL);
-                foreach (string nom in nomCommerciaux)
-                {
-                    listBox1.Items.Add(nom);
-                }
-                Refresh();
-            }
-    }
-        private void listeBoxSelected(object sender, EventArgs e) {
-
-            listBox2.Items.Clear();
-
-            string curItem = listBox1.SelectedItem.ToString();
+            */
             IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                                        where x.NOM_COMMERCIAL.StartsWith(curItem)
-                                        select x);
-            foreach (COMMERCIAL commercial in c)
+                                      where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                      select x);
+
+
+            if (c.Count()== 0)
+                  {
+                      actif.Checked =true;
+                      actif.Enabled = false;
+                      inactif.Checked = false;
+                      inactif.Enabled = false;
+                  }else
+                  {
+                      actif.Enabled = true;
+                      inactif.Enabled = true;
+                  }
+                  
+        }
+        private void listeBoxSelected(object sender, EventArgs e) {
+            bool t;
+            listBox2.Items.Clear();
+            string curItem;
+            if (listBox1.SelectedItem != null)
             {
+                 curItem = listBox1.SelectedItem.ToString();
+
+          /*  IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                                        where x.NOM_COMMERCIAL.StartsWith(curItem)
+                                        select x);*/
+                COMMERCIAL commercial = (from x in enfin.COMMERCIAL
+                                where x.NOM_COMMERCIAL.StartsWith(curItem)
+                                select x).First();
+          //  foreach (COMMERCIAL commercial in c)
+            //{
                 nom.Text = commercial.NOM_COMMERCIAL;
                 prenom.Text = commercial.PRENOM_COMMERCIAL;
                 email.Text = commercial.EMAIL;
@@ -148,18 +268,42 @@ namespace EcranAccueil
                 fixePro.Text = commercial.TÉLÉPHONE_FIXE_PRO.ToString();
                 telephonePerso.Text = commercial.TÉLÉPHONE_PERSONNEL.ToString();
                 email.Text = commercial.EMAIL;
-                // commercial.STATUT_COMMERCIAL = "actif";
-               
+                status = commercial.STATUT_COMMERCIAL;
+                    listBox2.Items.Add(status);
+                if (status.ToLower().Equals("actif"))
+                    t = true;
+                else
+                 t = false;
+
+                    // listBox2.Items.Add(commercial.STATUT_COMMERCIAL);
+                    //actif.Checked = true;
+
 
                 foreach (ACHETEUR acheteur in commercial.ACHETEUR.ToList())
                 {
-                    listBox2.Items.Add(acheteur.NOM_ACHETEUR);     
+                    var i=acheteur.IDACHETEUR;
+                    listBox2.Items.Add(acheteur.NOM_ACHETEUR);
+                }
+           // }
+
+                if (t)
+                {
+                    actif.Checked = true;
+                    inactif.Checked = false;
+
+                }
+                else 
+                {
+                    actif.Checked = false;
+                    inactif.Checked = true;
                 }
                 Refresh();
+
             }
 
 
-            
+
+
         }
 
         private void clear_Click(object sender, EventArgs e)
@@ -175,6 +319,111 @@ namespace EcranAccueil
             listBox2.Items.Clear();
           
         }
-        
+
+
+        private void actif_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked)
+            {
+                status = "ACTIF";
+                inactif.Checked = false;
+
+            }
+
+        }
+
+        private void inactif_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked)
+            {
+                status = "INACTIF";
+                actif.Checked = false;
+
+            }
+
+
+        }
+
+        private void actifView_Click(object sender, EventArgs e)
+        {
+
+            nom.Text = "";
+            prenom.Text = "";
+            email.Text = "";
+            portablePro.Text = "";
+            fixePro.Text = "";
+            telephonePerso.Text = "";
+            email.Text = "";
+            listBox2.Items.Clear();
+            listBox1.Items.Clear();
+            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                                        where x.STATUT_COMMERCIAL == "ACTIF"
+                                        select x);
+
+            //
+            foreach (COMMERCIAL commercial in c)
+            {
+                listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+            }
+
+        }
+
+        private void inactifView_Click(object sender, EventArgs e)
+        {
+
+            nom.Text = "";
+            prenom.Text = "";
+            email.Text = "";
+            portablePro.Text = "";
+            fixePro.Text = "";
+            telephonePerso.Text = "";
+            email.Text = "";
+            listBox2.Items.Clear();
+            listBox1.Items.Clear();
+            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                                        where x.STATUT_COMMERCIAL == "INACTIF"
+                                        select x);
+
+            //
+            foreach (COMMERCIAL commercial in c)
+            {
+                listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+            }
+
+        }
+
+        private void tousView_Click(object sender, EventArgs e)
+        {
+
+            nom.Text = "";
+            prenom.Text = "";
+            email.Text = "";
+            portablePro.Text = "";
+            fixePro.Text = "";
+            telephonePerso.Text = "";
+            email.Text = "";
+            listBox2.Items.Clear();
+            listBox1.Items.Clear();
+            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+                                        select x);
+
+            //
+            foreach (COMMERCIAL commercial in c)
+            {
+                listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Accueil accueil = new Accueil();
+            accueil.Show();
+            this.Hide();
+
+
+        }
     }
 }

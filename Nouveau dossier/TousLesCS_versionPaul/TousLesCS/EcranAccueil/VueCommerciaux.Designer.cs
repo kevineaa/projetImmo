@@ -49,12 +49,14 @@
             this.editerCommercial = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.fixePro = new System.Windows.Forms.TextBox();
             this.telephonePerso = new System.Windows.Forms.TextBox();
             this.clear = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.actif = new System.Windows.Forms.CheckBox();
+            this.inactif = new System.Windows.Forms.CheckBox();
+            this.actifView = new System.Windows.Forms.Button();
+            this.inactifView = new System.Windows.Forms.Button();
+            this.tousView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -241,7 +243,7 @@
             this.ajoutCommercial.Name = "ajoutCommercial";
             this.ajoutCommercial.Size = new System.Drawing.Size(221, 36);
             this.ajoutCommercial.TabIndex = 46;
-            this.ajoutCommercial.Text = "Ajouter un nouveau commercial";
+            this.ajoutCommercial.Text = "Ajouter/Modifier un commercial";
             this.ajoutCommercial.UseVisualStyleBackColor = true;
             this.ajoutCommercial.Click += new System.EventHandler(this.ajoutCommercial_Click);
             // 
@@ -253,7 +255,7 @@
             this.editerCommercial.Name = "editerCommercial";
             this.editerCommercial.Size = new System.Drawing.Size(221, 36);
             this.editerCommercial.TabIndex = 47;
-            this.editerCommercial.Text = "Editer le commercial";
+            this.editerCommercial.Text = "Rechercher le commercial";
             this.editerCommercial.UseVisualStyleBackColor = true;
             this.editerCommercial.Click += new System.EventHandler(this.editerCommercial_Click);
             // 
@@ -267,6 +269,7 @@
             this.button4.TabIndex = 51;
             this.button4.Text = "Retour Accueil";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label15
             // 
@@ -278,28 +281,6 @@
             this.label15.Size = new System.Drawing.Size(214, 29);
             this.label15.TabIndex = 52;
             this.label15.Text = "COMMERCIAUX";
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button5.Location = new System.Drawing.Point(92, 331);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(164, 28);
-            this.button5.TabIndex = 53;
-            this.button5.Text = "ACTIF";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button6.Location = new System.Drawing.Point(264, 331);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(164, 28);
-            this.button6.TabIndex = 54;
-            this.button6.Text = "ANCIEN EMPLOYE";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // fixePro
             // 
@@ -327,28 +308,71 @@
             this.clear.UseVisualStyleBackColor = true;
             this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
-            // label6
+            // actif
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(434, 607);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 17);
-            this.label6.TabIndex = 59;
-            this.label6.Text = "Status";
+            this.actif.AutoSize = true;
+            this.actif.Location = new System.Drawing.Point(469, 599);
+            this.actif.Name = "actif";
+            this.actif.Size = new System.Drawing.Size(56, 21);
+            this.actif.TabIndex = 59;
+            this.actif.Text = "actif";
+            this.actif.UseVisualStyleBackColor = true;
+            this.actif.CheckedChanged += new System.EventHandler(this.actif_CheckedChanged);
+            // 
+            // inactif
+            // 
+            this.inactif.AutoSize = true;
+            this.inactif.Location = new System.Drawing.Point(573, 599);
+            this.inactif.Name = "inactif";
+            this.inactif.Size = new System.Drawing.Size(67, 21);
+            this.inactif.TabIndex = 60;
+            this.inactif.Text = "inactif";
+            this.inactif.UseVisualStyleBackColor = true;
+            this.inactif.CheckedChanged += new System.EventHandler(this.inactif_CheckedChanged);
+            // 
+            // actifView
+            // 
+            this.actifView.Location = new System.Drawing.Point(175, 330);
+            this.actifView.Name = "actifView";
+            this.actifView.Size = new System.Drawing.Size(116, 23);
+            this.actifView.TabIndex = 61;
+            this.actifView.Text = "Actif";
+            this.actifView.UseVisualStyleBackColor = true;
+            this.actifView.Click += new System.EventHandler(this.actifView_Click);
+            // 
+            // inactifView
+            // 
+            this.inactifView.Location = new System.Drawing.Point(333, 330);
+            this.inactifView.Name = "inactifView";
+            this.inactifView.Size = new System.Drawing.Size(122, 23);
+            this.inactifView.TabIndex = 62;
+            this.inactifView.Text = "Ancien Employé";
+            this.inactifView.UseVisualStyleBackColor = true;
+            this.inactifView.Click += new System.EventHandler(this.inactifView_Click);
+            // 
+            // tousView
+            // 
+            this.tousView.Location = new System.Drawing.Point(55, 330);
+            this.tousView.Name = "tousView";
+            this.tousView.Size = new System.Drawing.Size(75, 23);
+            this.tousView.TabIndex = 63;
+            this.tousView.Text = "Tous";
+            this.tousView.UseVisualStyleBackColor = true;
+            this.tousView.Click += new System.EventHandler(this.tousView_Click);
             // 
             // VueCommerciaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1292, 690);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tousView);
+            this.Controls.Add(this.inactifView);
+            this.Controls.Add(this.actifView);
+            this.Controls.Add(this.inactif);
+            this.Controls.Add(this.actif);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.telephonePerso);
             this.Controls.Add(this.fixePro);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.editerCommercial);
@@ -401,12 +425,14 @@
         private System.Windows.Forms.Button editerCommercial;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox fixePro;
         private System.Windows.Forms.TextBox telephonePerso;
         private System.Windows.Forms.Button clear;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckBox actif;
+        private System.Windows.Forms.CheckBox inactif;
+        private System.Windows.Forms.Button actifView;
+        private System.Windows.Forms.Button inactifView;
+        private System.Windows.Forms.Button tousView;
     }
 }
