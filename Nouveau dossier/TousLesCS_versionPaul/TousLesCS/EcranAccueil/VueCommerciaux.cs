@@ -166,17 +166,7 @@ namespace EcranAccueil
                 commercial.EMAIL = email.Text;
                 commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
 
-                if (commercial.STATUT_COMMERCIAL.ToLowerInvariant() == "actif")
-                {
-                    actif.Checked = true;
-                    inactif.Checked = false;
-
-                }
-                else if (commercial.STATUT_COMMERCIAL == "INACTIF"|| commercial.STATUT_COMMERCIAL == "inactif")
-                {
-                    actif.Checked = false;
-                    inactif.Checked = true;
-                }
+           
                 foreach (ACHETEUR r in c.ACHETEUR)
                 {
                     commercial.ACHETEUR.Add(r);
@@ -249,18 +239,14 @@ namespace EcranAccueil
             bool t;
             listBox2.Items.Clear();
             string curItem;
-            if (listBox1.SelectedItem != null)
-            {
+         
                  curItem = listBox1.SelectedItem.ToString();
 
-          /*  IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                                        where x.NOM_COMMERCIAL.StartsWith(curItem)
-                                        select x);*/
+    
                 COMMERCIAL commercial = (from x in enfin.COMMERCIAL
                                 where x.NOM_COMMERCIAL.StartsWith(curItem)
                                 select x).First();
-          //  foreach (COMMERCIAL commercial in c)
-            //{
+          
                 nom.Text = commercial.NOM_COMMERCIAL;
                 prenom.Text = commercial.PRENOM_COMMERCIAL;
                 email.Text = commercial.EMAIL;
@@ -269,42 +255,44 @@ namespace EcranAccueil
                 telephonePerso.Text = commercial.TÉLÉPHONE_PERSONNEL.ToString();
                 email.Text = commercial.EMAIL;
                 status = commercial.STATUT_COMMERCIAL;
-                    listBox2.Items.Add(status);
-                if (status.ToLower().Equals("actif"))
-                    t = true;
-                else
-                 t = false;
-
-                    // listBox2.Items.Add(commercial.STATUT_COMMERCIAL);
-                    //actif.Checked = true;
+                listBox2.Items.Add(commercial.STATUT_COMMERCIAL);
 
 
-                foreach (ACHETEUR acheteur in commercial.ACHETEUR.ToList())
+
+            // listBox2.Items.Add(commercial.STATUT_COMMERCIAL);
+            //actif.Checked = true;
+
+
+            foreach (ACHETEUR acheteur in commercial.ACHETEUR.ToList())
                 {
-                    var i=acheteur.IDACHETEUR;
+                   // var i=acheteur.IDACHETEUR;
                     listBox2.Items.Add(acheteur.NOM_ACHETEUR);
                 }
-           // }
+            // }
+           
+            
+           
+            Refresh();
+           string inactifs ="INACTIF";
+            string actifs = "ACTIF";
 
-                if (t)
-                {
-                    actif.Checked = true;
-                    inactif.Checked = false;
+            if (String.Compare(status.ToUpper(),inactifs.ToUpper()) == 1)
+            {
+                actif.Checked = false;
+                inactif.Checked = true;
 
-                }
-                else 
-                {
-                    actif.Checked = false;
-                    inactif.Checked = true;
-                }
-                Refresh();
-
+            }
+            else if (String.Compare(status.ToUpper(), actifs.ToUpper()) == 1)
+            {
+                actif.Checked = true;
+                inactif.Checked = false;
             }
 
 
 
 
         }
+    //    public static int Compare(string strA, string strB);
 
         private void clear_Click(object sender, EventArgs e)
         {
