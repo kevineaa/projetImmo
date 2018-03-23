@@ -397,6 +397,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VueCommerciaux";
             this.Text = "VueCommerciaux";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VueCommerciaux_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

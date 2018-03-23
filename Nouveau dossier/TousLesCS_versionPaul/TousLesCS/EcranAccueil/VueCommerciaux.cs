@@ -35,7 +35,8 @@ namespace EcranAccueil
 
         private void editerCommercial_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            sauvegarde();
+          /*  listBox1.Items.Clear();
           //  nom.Text = "";
             prenom.Text = "";
             email.Text = "";
@@ -89,7 +90,7 @@ namespace EcranAccueil
                 inactif.Enabled = true;
             }
 
-
+            */
         }
 
 
@@ -115,16 +116,14 @@ namespace EcranAccueil
 
         private void ajoutCommercial_Click(object sender, EventArgs e)
         {
+            sauvegarde();
+            /*
             IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
                                         where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                         select x);
 
 
-            /*  foreach (string nom in nomCommerciaux)
-              {
-                  listBox1.Items.Add(nom);
-              }
-              Refresh();*/
+    
             if (ca.Count() == 0)
             {
                 actif.Checked = true;
@@ -178,6 +177,7 @@ namespace EcranAccueil
                 enfin.COMMERCIAL.Remove(c);
                 enfin.SaveChanges();
             }
+            */
         }
 
         private void nom_TextChanged(object sender, EventArgs e)
@@ -239,7 +239,7 @@ namespace EcranAccueil
             bool t;
             listBox2.Items.Clear();
             string curItem;
-         
+            if (listBox1.SelectedItem !=null) { 
                  curItem = listBox1.SelectedItem.ToString();
 
     
@@ -288,7 +288,7 @@ namespace EcranAccueil
                 inactif.Checked = false;
             }
 
-
+            }
 
 
         }
@@ -413,5 +413,98 @@ namespace EcranAccueil
 
 
         }
+        private void VueCommerciaux_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+
+
+            /*   System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+               messageBoxCS.AppendFormat("{0} = {1}", "CloseReason", e.CloseReason);
+               messageBoxCS.AppendLine();
+               MessageBox.Show(messageBoxCS.ToString(), "FormClosed Event");
+               */
+            DialogResult result;
+
+             if (nom.Text != "" || prenom.Text != "" || email.Text != "" || portablePro.Text != "" || fixePro.Text != "" || telephonePerso.Text != "" || email.Text != "")
+            {
+            result = MessageBox.Show("sauvegarder", "quitter", MessageBoxButtons.YesNo);
+
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    // Closes the parent form.
+                    sauvegarde();
+                    //this.Close();
+
+                }
+            
+                nom.Text = ""; prenom.Text = ""; email.Text = "";  portablePro.Text = ""; fixePro.Text = ""; telephonePerso.Text = ""; email.Text = "";
+                this.Close();
+
+
+            }
+
+        }
+        private void sauvegarde() {
+            IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
+                                         where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                         select x);
+
+            if (ca.Count() == 0)
+            {
+                actif.Checked = true;
+                actif.Enabled = false;
+                inactif.Checked = false;
+                inactif.Enabled = false;
+                status = "ACTIF";
+                COMMERCIAL commercial = new COMMERCIAL();
+        commercial.NOM_COMMERCIAL = nom.Text;
+                commercial.PRENOM_COMMERCIAL = prenom.Text;
+                commercial.EMAIL = email.Text;
+                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
+                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
+                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
+                commercial.EMAIL = email.Text;
+                commercial.STATUT_COMMERCIAL = status;
+
+                enfin.COMMERCIAL.Add(commercial);
+                enfin.SaveChanges();
+            }
+            else
+            {
+                COMMERCIAL c = (from x in enfin.COMMERCIAL
+                                where x.NOM_COMMERCIAL.StartsWith(nom.Text)
+                                select x).First();
+    actif.Enabled = true;
+                inactif.Enabled = true;
+                status = c.STATUT_COMMERCIAL;
+
+
+                COMMERCIAL commercial = new COMMERCIAL();
+
+    commercial.NOM_COMMERCIAL = nom.Text;
+                commercial.PRENOM_COMMERCIAL = prenom.Text;
+                commercial.EMAIL = email.Text;
+                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
+                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
+                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
+                commercial.EMAIL = email.Text;
+                commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
+
+           
+                foreach (ACHETEUR r in c.ACHETEUR)
+                {
+                    commercial.ACHETEUR.Add(r);
+                }
+
+commercial.STATUT_COMMERCIAL = status;
+                //commercial.ACHETEUR = c.ACHETEUR;
+                enfin.COMMERCIAL.Add(commercial);
+                enfin.COMMERCIAL.Remove(c);
+                enfin.SaveChanges();
+            }}
+
+   
     }
 }
