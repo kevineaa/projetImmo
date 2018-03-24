@@ -211,9 +211,7 @@ C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\Tous
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.xml
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\MySql.Data.xml
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\bin\Debug\fr\EntityFramework.resources.dll
-C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\ImmobillyAjoutBien.AjoutBien.resources
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.AjoutClient.resources
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.CatalogueBiens.resources
@@ -227,3 +225,4 @@ C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\Tous
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.RechercherClient.resources
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.VueCommerciaux.resources
 C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csproj.GenerateResource.Cache
+C:\Users\kevin-adm\Desktop\projetImmo\Nouveau dossier\TousLesCS_versionPaul\TousLesCS\EcranAccueil\obj\Debug\EcranAccueil.csprojResolveAssemblyReference.cache

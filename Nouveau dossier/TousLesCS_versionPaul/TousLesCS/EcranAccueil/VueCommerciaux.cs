@@ -8,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListViewItem;
 
 namespace EcranAccueil
 {
     public partial class VueCommerciaux : Form
     {
+
+        string inactifs = "INACTIF";
+        string actifs = "ACTIF";
         string status = "ACTIF";
 
         public EnfinEntities2 enfin = new EnfinEntities2();
@@ -21,77 +25,26 @@ namespace EcranAccueil
         {
             InitializeComponent();
 
-              var nomCommerciaux = (from c in enfin.COMMERCIAL
-                                    select c.NOM_COMMERCIAL);
 
-            var stat = (from c in enfin.COMMERCIAL
-                                  select c.STATUT_COMMERCIAL);
-            foreach (string nom in nomCommerciaux)
+            IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
+                                         select x);
+            foreach (COMMERCIAL c in ca)
             {
-             listBox1.Items.Add(nom);
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
 
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                listView1.Items.Add(lvi);
             }
+
+            
         }
 
-        private void editerCommercial_Click(object sender, EventArgs e)
-        {
-            sauvegarde();
-          /*  listBox1.Items.Clear();
-          //  nom.Text = "";
-            prenom.Text = "";
-            email.Text = "";
-            portablePro.Text = "";
-            fixePro.Text = "";
-            telephonePerso.Text = "";
-            email.Text = "";
-            listBox2.Items.Clear();
-            if (nom.Text != "")
-            {
 
-                IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                                            where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                            select x);
-
-                //
-                foreach (COMMERCIAL commercial in c)
-                {
-                    listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
-                }
-
-            }
-            else
-            {
-
-                //IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                //                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                //                        select x);
-
-                var nomCommerciaux = (from c in enfin.COMMERCIAL
-                                      select c.NOM_COMMERCIAL);
-
-
-                foreach (string nom in nomCommerciaux)
-                {
-                    listBox1.Items.Add(nom);
-                }
-                Refresh();
-            }
-
-            if (listBox1.Items.Count == 0)
-            {
-                actif.Checked = true;
-                actif.Enabled = false;
-                inactif.Checked = false;
-                inactif.Enabled = false;
-            }
-            else
-            {
-                actif.Enabled = true;
-                inactif.Enabled = true;
-            }
-
-            */
-        }
 
 
 
@@ -111,188 +64,36 @@ namespace EcranAccueil
             fixePro.Text = "";
             telephonePerso.Text = "";
             email.Text = "";
-            listBox2.Items.Clear();
+            listView2.Items.Clear();
         }
 
         private void ajoutCommercial_Click(object sender, EventArgs e)
         {
             sauvegarde();
-            /*
-            IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
+
+        }
+
+        private void nom_TextChanged(object sender, EventArgs e)
+        {
+
+            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
                                         where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                         select x);
-
-
-    
-            if (ca.Count() == 0)
+            if (c.Count() == 0)
             {
                 actif.Checked = true;
                 actif.Enabled = false;
                 inactif.Checked = false;
                 inactif.Enabled = false;
-                status = "ACTIF";
-                COMMERCIAL commercial = new COMMERCIAL();
-                commercial.NOM_COMMERCIAL = nom.Text;
-                commercial.PRENOM_COMMERCIAL = prenom.Text;
-                commercial.EMAIL = email.Text;
-                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
-                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
-                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
-                commercial.EMAIL = email.Text;
-                commercial.STATUT_COMMERCIAL = status;
-
-                enfin.COMMERCIAL.Add(commercial);
-                enfin.SaveChanges();
             }
             else
             {
-                COMMERCIAL c = (from x in enfin.COMMERCIAL
-                                where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                select x).First();
                 actif.Enabled = true;
                 inactif.Enabled = true;
-                status = c.STATUT_COMMERCIAL;
-
-
-                COMMERCIAL commercial = new COMMERCIAL();
-
-                commercial.NOM_COMMERCIAL = nom.Text;
-                commercial.PRENOM_COMMERCIAL = prenom.Text;
-                commercial.EMAIL = email.Text;
-                commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
-                commercial.TÉLÉPHONE_FIXE_PRO = Int32.Parse(fixePro.Text);
-                commercial.TÉLÉPHONE_PERSONNEL = Int32.Parse(telephonePerso.Text);
-                commercial.EMAIL = email.Text;
-                commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
-
-           
-                foreach (ACHETEUR r in c.ACHETEUR)
-                {
-                    commercial.ACHETEUR.Add(r);
-                }
-
-                commercial.STATUT_COMMERCIAL = status;
-                //commercial.ACHETEUR = c.ACHETEUR;
-                enfin.COMMERCIAL.Add(commercial);
-                enfin.COMMERCIAL.Remove(c);
-                enfin.SaveChanges();
             }
-            */
-        }
-
-        private void nom_TextChanged(object sender, EventArgs e)
-        {
-            /*      listBox1.Items.Clear();
-
-                  if (nom.Text != "")
-                  {
-
-                       IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                                       where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                       select x);
-
-                      //
-                      foreach (COMMERCIAL commercial in c)
-                      {
-                          listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
-                       }
-
-                  }
-                  else
-                  {
-
-                      //IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                        //                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                          //                        select x);
-
-                      var nomCommerciaux = (from c in enfin.COMMERCIAL
-                                           select c.NOM_COMMERCIAL);
-
-
-                      foreach (string nom in nomCommerciaux)
-                      {
-                          listBox1.Items.Add(nom);
-                      }
-                      Refresh();
-                  }
-
-            */
-            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
-                                      where x.NOM_COMMERCIAL.StartsWith(nom.Text)
-                                      select x);
-
-
-            if (c.Count()== 0)
-                  {
-                      actif.Checked =true;
-                      actif.Enabled = false;
-                      inactif.Checked = false;
-                      inactif.Enabled = false;
-                  }else
-                  {
-                      actif.Enabled = true;
-                      inactif.Enabled = true;
-                  }
-                  
-        }
-        private void listeBoxSelected(object sender, EventArgs e) {
-            bool t;
-            listBox2.Items.Clear();
-            string curItem;
-            if (listBox1.SelectedItem !=null) { 
-                 curItem = listBox1.SelectedItem.ToString();
-
-    
-                COMMERCIAL commercial = (from x in enfin.COMMERCIAL
-                                where x.NOM_COMMERCIAL.StartsWith(curItem)
-                                select x).First();
-          
-                nom.Text = commercial.NOM_COMMERCIAL;
-                prenom.Text = commercial.PRENOM_COMMERCIAL;
-                email.Text = commercial.EMAIL;
-                portablePro.Text = commercial.TÉLÉPHONE_MOBILE_PRO.ToString();
-                fixePro.Text = commercial.TÉLÉPHONE_FIXE_PRO.ToString();
-                telephonePerso.Text = commercial.TÉLÉPHONE_PERSONNEL.ToString();
-                email.Text = commercial.EMAIL;
-                status = commercial.STATUT_COMMERCIAL;
-                listBox2.Items.Add(commercial.STATUT_COMMERCIAL);
-
-
-
-            // listBox2.Items.Add(commercial.STATUT_COMMERCIAL);
-            //actif.Checked = true;
-
-
-            foreach (ACHETEUR acheteur in commercial.ACHETEUR.ToList())
-                {
-                   // var i=acheteur.IDACHETEUR;
-                    listBox2.Items.Add(acheteur.NOM_ACHETEUR);
-                }
-            // }
-           
-            
-           
-            Refresh();
-           string inactifs ="INACTIF";
-            string actifs = "ACTIF";
-
-            if (String.Compare(status.ToUpper(),inactifs.ToUpper()) == 1)
-            {
-                actif.Checked = false;
-                inactif.Checked = true;
-
-            }
-            else if (String.Compare(status.ToUpper(), actifs.ToUpper()) == 1)
-            {
-                actif.Checked = true;
-                inactif.Checked = false;
-            }
-
-            }
-
 
         }
-    //    public static int Compare(string strA, string strB);
+        
 
         private void clear_Click(object sender, EventArgs e)
         {
@@ -304,8 +105,22 @@ namespace EcranAccueil
             fixePro.Text = "";
             telephonePerso.Text = "";
             email.Text = "";
-            listBox2.Items.Clear();
-          
+            listView2.Items.Clear();
+
+            IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
+                                         select x);
+            foreach (COMMERCIAL c in ca)
+            {
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                listView1.Items.Add(lvi);
+            }
         }
 
 
@@ -344,16 +159,25 @@ namespace EcranAccueil
             fixePro.Text = "";
             telephonePerso.Text = "";
             email.Text = "";
-            listBox2.Items.Clear();
-            listBox1.Items.Clear();
-            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+            listView2.Items.Clear();
+            listView1.Items.Clear();
+            IQueryable<COMMERCIAL> commercial = (from x in enfin.COMMERCIAL
                                         where x.STATUT_COMMERCIAL == "ACTIF"
                                         select x);
-
-            //
-            foreach (COMMERCIAL commercial in c)
+           foreach (COMMERCIAL c in commercial)
             {
-                listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+
+                    ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+
+                    lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                    lvi.SubItems.Add(c.EMAIL);
+                    lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                    lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                    lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                    lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+
+                    listView1.Items.Add(lvi);
+    
             }
 
         }
@@ -368,16 +192,22 @@ namespace EcranAccueil
             fixePro.Text = "";
             telephonePerso.Text = "";
             email.Text = "";
-            listBox2.Items.Clear();
-            listBox1.Items.Clear();
-            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+            listView2.Items.Clear();
+            IQueryable<COMMERCIAL> commercial = (from x in enfin.COMMERCIAL
                                         where x.STATUT_COMMERCIAL == "INACTIF"
                                         select x);
 
-            //
-            foreach (COMMERCIAL commercial in c)
+            foreach (COMMERCIAL c in commercial)
             {
-                listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                listView1.Items.Add(lvi);
             }
 
         }
@@ -392,17 +222,22 @@ namespace EcranAccueil
             fixePro.Text = "";
             telephonePerso.Text = "";
             email.Text = "";
-            listBox2.Items.Clear();
-            listBox1.Items.Clear();
-            IQueryable<COMMERCIAL> c = (from x in enfin.COMMERCIAL
+            listView2.Items.Clear();
+            IQueryable<COMMERCIAL> commercial = (from x in enfin.COMMERCIAL
                                         select x);
 
-            //
-            foreach (COMMERCIAL commercial in c)
+            foreach (COMMERCIAL c in commercial)
             {
-                listBox1.Items.Add(commercial.NOM_COMMERCIAL.ToString());
-            }
 
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                listView1.Items.Add(lvi);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -418,35 +253,23 @@ namespace EcranAccueil
 
 
 
-            /*   System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-               messageBoxCS.AppendFormat("{0} = {1}", "CloseReason", e.CloseReason);
-               messageBoxCS.AppendLine();
-               MessageBox.Show(messageBoxCS.ToString(), "FormClosed Event");
-               */
             DialogResult result;
 
-             if (nom.Text != "" || prenom.Text != "" || email.Text != "" || portablePro.Text != "" || fixePro.Text != "" || telephonePerso.Text != "" || email.Text != "")
+            if (nom.Text != "" || prenom.Text != "" || email.Text != "" || portablePro.Text != "" || fixePro.Text != "" || telephonePerso.Text != "" || email.Text != "")
             {
-            result = MessageBox.Show("sauvegarder", "quitter", MessageBoxButtons.YesNo);
-
-
+                result = MessageBox.Show("sauvegarder", "quitter", MessageBoxButtons.YesNo);
                 if (result == System.Windows.Forms.DialogResult.Yes)
-                {
-
-                    // Closes the parent form.
                     sauvegarde();
-                    //this.Close();
 
-                }
-            
-                nom.Text = ""; prenom.Text = ""; email.Text = "";  portablePro.Text = ""; fixePro.Text = ""; telephonePerso.Text = ""; email.Text = "";
+                nom.Text = ""; prenom.Text = ""; email.Text = ""; portablePro.Text = ""; fixePro.Text = ""; telephonePerso.Text = ""; email.Text = "";
                 this.Close();
 
 
             }
 
         }
-        private void sauvegarde() {
+        private void sauvegarde()
+        {
             IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
                                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                          select x);
@@ -459,7 +282,7 @@ namespace EcranAccueil
                 inactif.Enabled = false;
                 status = "ACTIF";
                 COMMERCIAL commercial = new COMMERCIAL();
-        commercial.NOM_COMMERCIAL = nom.Text;
+                commercial.NOM_COMMERCIAL = nom.Text;
                 commercial.PRENOM_COMMERCIAL = prenom.Text;
                 commercial.EMAIL = email.Text;
                 commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
@@ -476,14 +299,14 @@ namespace EcranAccueil
                 COMMERCIAL c = (from x in enfin.COMMERCIAL
                                 where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                 select x).First();
-    actif.Enabled = true;
+                actif.Enabled = true;
                 inactif.Enabled = true;
                 status = c.STATUT_COMMERCIAL;
 
 
                 COMMERCIAL commercial = new COMMERCIAL();
 
-    commercial.NOM_COMMERCIAL = nom.Text;
+                commercial.NOM_COMMERCIAL = nom.Text;
                 commercial.PRENOM_COMMERCIAL = prenom.Text;
                 commercial.EMAIL = email.Text;
                 commercial.TÉLÉPHONE_MOBILE_PRO = Int32.Parse(portablePro.Text);
@@ -492,19 +315,163 @@ namespace EcranAccueil
                 commercial.EMAIL = email.Text;
                 commercial.STATUT_COMMERCIAL = c.STATUT_COMMERCIAL;
 
-           
+
                 foreach (ACHETEUR r in c.ACHETEUR)
                 {
                     commercial.ACHETEUR.Add(r);
                 }
 
-commercial.STATUT_COMMERCIAL = status;
-                //commercial.ACHETEUR = c.ACHETEUR;
+                commercial.STATUT_COMMERCIAL = status;
                 enfin.COMMERCIAL.Add(commercial);
                 enfin.COMMERCIAL.Remove(c);
                 enfin.SaveChanges();
-            }}
+            }
+        }
 
-   
+        private void rechercherCommercial_Click_1(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+
+            IQueryable<COMMERCIAL> c = (from v in enfin.COMMERCIAL
+                                            where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text) : true) &&
+                                            (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text) : true) &&
+                                              (email.Text != "" ? v.EMAIL.StartsWith(email.Text) : true) &&
+                                            (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text) : true) &&
+                                                  (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text) : true)
+
+                                            select v);
+                foreach (COMMERCIAL commercial in c)
+                {
+
+                      nom.Text = commercial.NOM_COMMERCIAL;
+                     prenom.Text = commercial.PRENOM_COMMERCIAL;
+                    email.Text= commercial.EMAIL;
+                    portablePro.Text = commercial.TÉLÉPHONE_MOBILE_PRO.ToString();
+                    fixePro.Text = commercial.TÉLÉPHONE_FIXE_PRO.ToString() ;
+                     telephonePerso.Text = commercial.TÉLÉPHONE_PERSONNEL.ToString();
+                    
+                    if (actif.Checked == true)
+                    {
+                        commercial.STATUT_COMMERCIAL= actifs;
+
+                    }
+                    else if (actif.Checked == true)
+                    {
+                        commercial.STATUT_COMMERCIAL = inactifs;
+
+                    }
+
+                    listView1.Items.Clear();
+                    ListViewItem lvi = new ListViewItem(commercial.NOM_COMMERCIAL);
+
+                    lvi.SubItems.Add(commercial.PRENOM_COMMERCIAL);
+                    lvi.SubItems.Add(commercial.EMAIL);
+                    lvi.SubItems.Add(commercial.TÉLÉPHONE_MOBILE_PRO.ToString());
+                    lvi.SubItems.Add(commercial.TÉLÉPHONE_FIXE_PRO.ToString());
+                    lvi.SubItems.Add(commercial.TÉLÉPHONE_PERSONNEL.ToString());
+                    lvi.SubItems.Add(commercial.STATUT_COMMERCIAL);
+
+                    listView1.Items.Add(lvi);
+
+                }
+
+            
+        }
+
+    
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            FormCollection fc = Application.OpenForms;
+            if (fc.Count == 1)
+            {
+                ACHETEUR acheteur=new ACHETEUR();
+
+                for (int i = 1; i < listView2.SelectedItems.Count; i++)
+                {
+                    int phone = Int32.Parse(listView2.SelectedItems[i].SubItems[3].Text);
+                    int postal = Int32.Parse(listView2.SelectedItems[i].SubItems[5].Text);
+                    string nom = listView2.SelectedItems[i].SubItems[0].Text.ToString(), prenom = listView2.SelectedItems[i].SubItems[1].Text.ToString()
+                       , mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
+                       ville = listView2.SelectedItems[i].SubItems[6].Text.ToString();
+                     acheteur = (from v in enfin.ACHETEUR
+                                         where (v.NOM_ACHETEUR.ToString().StartsWith(nom) &&
+                                            (v.PRENOM_ACHETEUR.StartsWith(prenom)) &&
+                                             (v.TÉLÉPHONE.Equals(phone)) &&
+                                               (v.EMAIL.StartsWith(mail)) &&
+                                              (v.ADRESSE.StartsWith(adresse)) &&
+                                             (v.VILLE.CODE_POSTAL.Equals(postal)) &&
+                                                   ( v.VILLE.NOM_VILLE.StartsWith(ville)))
+
+                                         select v).First();
+                }
+            
+            
+
+            AjoutClient ajoutClient = new AjoutClient();
+
+            ajoutClient.Show() ;
+            }
+        }
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            listView2.Items.Clear();
+            if (listView1.SelectedItems != null)
+            {
+
+
+                for (int i = 0; i < listView1.SelectedItems.Count; i++)
+                {
+                    nom.Text = listView1.SelectedItems[i].SubItems[0].Text.ToString();
+                    prenom.Text = listView1.SelectedItems[i].SubItems[1].Text.ToString();
+                    email.Text = listView1.SelectedItems[i].SubItems[2].Text.ToString();
+                    portablePro.Text = listView1.SelectedItems[i].SubItems[3].Text.ToString();
+                    fixePro.Text = listView1.SelectedItems[i].SubItems[4].Text.ToString();
+                    telephonePerso.Text = listView1.SelectedItems[i].SubItems[5].Text.ToString();
+                    status = listView1.SelectedItems[i].SubItems[6].Text.ToString();
+
+                    if (String.Compare(status.ToUpper(), inactifs.ToUpper()) == 1)
+                    {
+                        actif.Checked = false;
+                        inactif.Checked = true;
+
+                    }
+                    else if (String.Compare(status.ToUpper(), actifs.ToUpper()) == 1)
+                    {
+                        actif.Checked = true;
+                        inactif.Checked = false;
+                    }
+                    
+                    COMMERCIAL commercial = (from v in enfin.COMMERCIAL
+                                             where (nom.Text != "" ? v.NOM_COMMERCIAL.StartsWith(nom.Text) : true) &&
+                                             (prenom.Text != "" ? v.PRENOM_COMMERCIAL.StartsWith(prenom.Text) : true) &&
+                                               (email.Text != "" ? v.EMAIL.StartsWith(email.Text) : true) &&
+                                             (fixePro.Text != "" ? v.TÉLÉPHONE_FIXE_PRO.ToString().StartsWith(fixePro.Text) : true) &&
+                                                   (portablePro.Text != "" ? v.TÉLÉPHONE_MOBILE_PRO.ToString().StartsWith(portablePro.Text) : true)
+                                            
+                                             select v).First();
+                    foreach (ACHETEUR acheteur in commercial.ACHETEUR)
+                    {
+
+                        ListViewItem lvi = new ListViewItem(acheteur.NOM_ACHETEUR);
+
+                        lvi.SubItems.Add(acheteur.PRENOM_ACHETEUR);
+                        lvi.SubItems.Add(acheteur.EMAIL);
+                        lvi.SubItems.Add(acheteur.TÉLÉPHONE.ToString());
+
+                        lvi.SubItems.Add(acheteur.ADRESSE);
+
+                        lvi.SubItems.Add(acheteur.VILLE.CODE_POSTAL.ToString());
+                        lvi.SubItems.Add(acheteur.VILLE.NOM_VILLE.ToString());
+                        
+                        listView2.Items.Add(lvi);
+                    }
+                }
+            }
+
+            }
+        }
     }
-}
+
+

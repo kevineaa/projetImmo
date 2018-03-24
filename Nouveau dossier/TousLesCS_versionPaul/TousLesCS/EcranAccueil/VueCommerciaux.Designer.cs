@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ColumnHeader portablesPro;
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.nom = new System.Windows.Forms.TextBox();
@@ -57,7 +56,28 @@
             this.actifView = new System.Windows.Forms.Button();
             this.inactifView = new System.Windows.Forms.Button();
             this.tousView = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.Noms = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Prenoms = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Emails = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fixesPro = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.telephonesPerso = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Statu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.nomacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prenomacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.emailacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.adresseacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.codePostale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.villeacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.telephoneClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            portablesPro = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
+            // 
+            // portablesPro
+            // 
+            portablesPro.Text = "portablesPro";
+            portablesPro.Width = 90;
             // 
             // label1
             // 
@@ -70,37 +90,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Liste des Commerciaux";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(55, 127);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(400, 196);
-            this.listBox1.TabIndex = 1;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listeBoxSelected);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(660, 107);
+            this.label2.Location = new System.Drawing.Point(844, 107);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Portefeuille Client";
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(580, 127);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(638, 196);
-            this.listBox2.TabIndex = 3;
             // 
             // label3
             // 
@@ -257,7 +256,7 @@
             this.editerCommercial.TabIndex = 47;
             this.editerCommercial.Text = "Rechercher le commercial";
             this.editerCommercial.UseVisualStyleBackColor = true;
-            this.editerCommercial.Click += new System.EventHandler(this.editerCommercial_Click);
+            this.editerCommercial.Click += new System.EventHandler(this.rechercherCommercial_Click_1);
             // 
             // button4
             // 
@@ -275,7 +274,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(376, 44);
+            this.label15.Location = new System.Drawing.Point(510, 22);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(214, 29);
@@ -360,11 +359,109 @@
             this.tousView.UseVisualStyleBackColor = true;
             this.tousView.Click += new System.EventHandler(this.tousView_Click);
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Noms,
+            this.Prenoms,
+            this.Emails,
+            portablesPro,
+            this.fixesPro,
+            this.telephonesPerso,
+            this.Statu});
+            this.listView1.Location = new System.Drawing.Point(36, 131);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(489, 193);
+            this.listView1.TabIndex = 64;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
+            // 
+            // Noms
+            // 
+            this.Noms.Text = "Noms";
+            // 
+            // Prenoms
+            // 
+            this.Prenoms.Text = "PreNoms";
+            this.Prenoms.Width = 78;
+            // 
+            // Emails
+            // 
+            this.Emails.Text = "Emails";
+            this.Emails.Width = 67;
+            // 
+            // fixesPro
+            // 
+            this.fixesPro.Text = "fixes Pro";
+            // 
+            // telephonesPerso
+            // 
+            this.telephonesPerso.Text = "telephone Perso";
+            // 
+            // Statu
+            // 
+            this.Statu.Text = "Status";
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.nomacheteur,
+            this.prenomacheteur,
+            this.emailacheteur,
+            this.telephoneClient,
+            this.adresseacheteur,
+            this.codePostale,
+            this.villeacheteur});
+            this.listView2.Location = new System.Drawing.Point(700, 131);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(548, 193);
+            this.listView2.TabIndex = 65;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            // 
+            // nomacheteur
+            // 
+            this.nomacheteur.Text = "nom";
+            // 
+            // prenomacheteur
+            // 
+            this.prenomacheteur.Text = "prenom";
+            this.prenomacheteur.Width = 70;
+            // 
+            // emailacheteur
+            // 
+            this.emailacheteur.Text = "email";
+            this.emailacheteur.Width = 118;
+            // 
+            // adresseacheteur
+            // 
+            this.adresseacheteur.Text = "adresse";
+            this.adresseacheteur.Width = 99;
+            // 
+            // codePostale
+            // 
+            this.codePostale.Text = "code postale";
+            this.codePostale.Width = 96;
+            // 
+            // villeacheteur
+            // 
+            this.villeacheteur.Text = "ville";
+            this.villeacheteur.Width = 90;
+            // 
+            // telephoneClient
+            // 
+            this.telephoneClient.Text = "telephone";
+            this.telephoneClient.Width = 81;
+            // 
             // VueCommerciaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1292, 690);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.tousView);
             this.Controls.Add(this.inactifView);
             this.Controls.Add(this.actifView);
@@ -390,9 +487,7 @@
             this.Controls.Add(this.nom);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VueCommerciaux";
@@ -406,9 +501,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox nom;
@@ -429,11 +522,25 @@
         private System.Windows.Forms.TextBox fixePro;
         private System.Windows.Forms.TextBox telephonePerso;
         private System.Windows.Forms.Button clear;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.CheckBox actif;
         private System.Windows.Forms.CheckBox inactif;
         private System.Windows.Forms.Button actifView;
         private System.Windows.Forms.Button inactifView;
         private System.Windows.Forms.Button tousView;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader Noms;
+        private System.Windows.Forms.ColumnHeader Prenoms;
+        private System.Windows.Forms.ColumnHeader Emails;
+        private System.Windows.Forms.ColumnHeader fixesPro;
+        private System.Windows.Forms.ColumnHeader telephonesPerso;
+        private System.Windows.Forms.ColumnHeader Statu;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader nomacheteur;
+        private System.Windows.Forms.ColumnHeader prenomacheteur;
+        private System.Windows.Forms.ColumnHeader emailacheteur;
+        private System.Windows.Forms.ColumnHeader adresseacheteur;
+        private System.Windows.Forms.ColumnHeader villeacheteur;
+        private System.Windows.Forms.ColumnHeader codePostale;
+        private System.Windows.Forms.ColumnHeader telephoneClient;
     }
 }
