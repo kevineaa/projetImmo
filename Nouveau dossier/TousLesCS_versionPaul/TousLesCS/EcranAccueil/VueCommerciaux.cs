@@ -248,6 +248,7 @@ namespace EcranAccueil
 
 
         }
+        Boolean client;
         private void VueCommerciaux_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -411,6 +412,8 @@ namespace EcranAccueil
             AjoutClient ajoutClient = new AjoutClient();
 
             ajoutClient.Show() ;
+                this.Hide();
+
             }
         }
 
