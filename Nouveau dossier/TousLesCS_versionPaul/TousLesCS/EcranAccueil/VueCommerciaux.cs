@@ -327,6 +327,29 @@ namespace EcranAccueil
                 enfin.COMMERCIAL.Remove(c);
                 enfin.SaveChanges();
             }
+            nom.Text = "";
+            prenom.Text = "";
+            email.Text = "";
+            portablePro.Text = "";
+            fixePro.Text = "";
+            telephonePerso.Text = "";
+            email.Text = "";
+            listView2.Items.Clear();
+            IQueryable<COMMERCIAL> commercials = (from x in enfin.COMMERCIAL
+                                                 select x);
+
+            foreach (COMMERCIAL c in commercials)
+            {
+
+                ListViewItem lvi = new ListViewItem(c.NOM_COMMERCIAL);
+                lvi.SubItems.Add(c.PRENOM_COMMERCIAL);
+                lvi.SubItems.Add(c.EMAIL);
+                lvi.SubItems.Add(c.TÉLÉPHONE_MOBILE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_FIXE_PRO.ToString());
+                lvi.SubItems.Add(c.TÉLÉPHONE_PERSONNEL.ToString());
+                lvi.SubItems.Add(c.STATUT_COMMERCIAL);
+                listView1.Items.Add(lvi);
+            }
         }
 
         private void rechercherCommercial_Click_1(object sender, EventArgs e)
