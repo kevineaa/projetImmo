@@ -56,15 +56,7 @@ namespace EcranAccueil
                             select x).First();
             enfin.COMMERCIAL.Remove(c);
             enfin.SaveChanges();
-
-            nom.Text = "";
-            prenom.Text = "";
-            email.Text = "";
-            portablePro.Text = "";
-            fixePro.Text = "";
-            telephonePerso.Text = "";
-            email.Text = "";
-            listView2.Items.Clear();
+            effacer();
         }
 
         private void ajoutCommercial_Click(object sender, EventArgs e)
@@ -98,14 +90,7 @@ namespace EcranAccueil
         private void clear_Click(object sender, EventArgs e)
         {
 
-            nom.Text = "";
-            prenom.Text = "";
-            email.Text = "";
-            portablePro.Text = "";
-            fixePro.Text = "";
-            telephonePerso.Text = "";
-            email.Text = "";
-            listView2.Items.Clear();
+            effacer();
 
             IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
                                          select x);
@@ -148,10 +133,7 @@ namespace EcranAccueil
 
 
         }
-
-        private void actifView_Click(object sender, EventArgs e)
-        {
-
+        void effacer() {
             nom.Text = "";
             prenom.Text = "";
             email.Text = "";
@@ -160,7 +142,16 @@ namespace EcranAccueil
             telephonePerso.Text = "";
             email.Text = "";
             listView2.Items.Clear();
+
+        }
+
+        private void actifView_Click(object sender, EventArgs e)
+        {
+
+            effacer();
             listView1.Items.Clear();
+           // listView1.Clear();
+
             IQueryable<COMMERCIAL> commercial = (from x in enfin.COMMERCIAL
                                         where x.STATUT_COMMERCIAL == "ACTIF"
                                         select x);
@@ -184,15 +175,9 @@ namespace EcranAccueil
 
         private void inactifView_Click(object sender, EventArgs e)
         {
+            effacer();
+            listView1.Items.Clear();
 
-            nom.Text = "";
-            prenom.Text = "";
-            email.Text = "";
-            portablePro.Text = "";
-            fixePro.Text = "";
-            telephonePerso.Text = "";
-            email.Text = "";
-            listView2.Items.Clear();
             IQueryable<COMMERCIAL> commercial = (from x in enfin.COMMERCIAL
                                         where x.STATUT_COMMERCIAL == "INACTIF"
                                         select x);
@@ -214,15 +199,9 @@ namespace EcranAccueil
 
         private void tousView_Click(object sender, EventArgs e)
         {
-
-            nom.Text = "";
-            prenom.Text = "";
-            email.Text = "";
-            portablePro.Text = "";
-            fixePro.Text = "";
-            telephonePerso.Text = "";
-            email.Text = "";
-            listView2.Items.Clear();
+            effacer();
+            listView1.Items.Clear();
+   
             IQueryable<COMMERCIAL> commercial = (from x in enfin.COMMERCIAL
                                         select x);
 
@@ -248,7 +227,6 @@ namespace EcranAccueil
 
 
         }
-        Boolean client;
         private void VueCommerciaux_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -406,38 +384,36 @@ namespace EcranAccueil
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            FormCollection fc = Application.OpenForms;
-            if (fc.Count == 1)
+             ACHETEUR acheteur=new ACHETEUR();
+
+            for (int i = 1; i < listView2.SelectedItems.Count; i++)
             {
-                ACHETEUR acheteur=new ACHETEUR();
+                int phone = Int32.Parse(listView2.SelectedItems[i].SubItems[3].Text);
+                int postal = Int32.Parse(listView2.SelectedItems[i].SubItems[5].Text);
+                string nom = listView2.SelectedItems[i].SubItems[0].Text.ToString(), prenom = listView2.SelectedItems[i].SubItems[1].Text.ToString()
+                   , mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
+                   ville = listView2.SelectedItems[i].SubItems[6].Text.ToString();
+                acheteur = (from v in enfin.ACHETEUR
+                            where (v.NOM_ACHETEUR.ToString().StartsWith(nom) &&
+                               (v.PRENOM_ACHETEUR.StartsWith(prenom)) &&
+                                (v.TÉLÉPHONE.Equals(phone)) &&
+                                  (v.EMAIL.StartsWith(mail)) &&
+                                 (v.ADRESSE.StartsWith(adresse)) &&
+                                (v.VILLE.CODE_POSTAL.Equals(postal)) &&
+                                      (v.VILLE.NOM_VILLE.StartsWith(ville)))
 
-                for (int i = 1; i < listView2.SelectedItems.Count; i++)
-                {
-                    int phone = Int32.Parse(listView2.SelectedItems[i].SubItems[3].Text);
-                    int postal = Int32.Parse(listView2.SelectedItems[i].SubItems[5].Text);
-                    string nom = listView2.SelectedItems[i].SubItems[0].Text.ToString(), prenom = listView2.SelectedItems[i].SubItems[1].Text.ToString()
-                       , mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
-                       ville = listView2.SelectedItems[i].SubItems[6].Text.ToString();
-                     acheteur = (from v in enfin.ACHETEUR
-                                         where (v.NOM_ACHETEUR.ToString().StartsWith(nom) &&
-                                            (v.PRENOM_ACHETEUR.StartsWith(prenom)) &&
-                                             (v.TÉLÉPHONE.Equals(phone)) &&
-                                               (v.EMAIL.StartsWith(mail)) &&
-                                              (v.ADRESSE.StartsWith(adresse)) &&
-                                             (v.VILLE.CODE_POSTAL.Equals(postal)) &&
-                                                   ( v.VILLE.NOM_VILLE.StartsWith(ville)))
+                            select v).First();
 
-                                         select v).First();
-                }
-            
+            }
             
 
             AjoutClient ajoutClient = new AjoutClient();
+                // AjoutClient ajoutClient = new AjoutClient(acheteur);
 
-            ajoutClient.Show() ;
+                ajoutClient.Show() ;
                 this.Hide();
 
-            }
+            
         }
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)

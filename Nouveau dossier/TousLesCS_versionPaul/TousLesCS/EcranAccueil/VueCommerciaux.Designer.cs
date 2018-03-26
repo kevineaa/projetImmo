@@ -67,10 +67,10 @@
             this.nomacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prenomacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.emailacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.telephoneClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.adresseacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.codePostale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.villeacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.telephoneClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             portablesPro = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
@@ -369,9 +369,11 @@
             this.fixesPro,
             this.telephonesPerso,
             this.Statu});
+            this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(36, 131);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(489, 193);
+            this.listView1.Size = new System.Drawing.Size(565, 201);
             this.listView1.TabIndex = 64;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -413,9 +415,10 @@
             this.adresseacheteur,
             this.codePostale,
             this.villeacheteur});
-            this.listView2.Location = new System.Drawing.Point(700, 131);
+            this.listView2.Location = new System.Drawing.Point(644, 139);
+            this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(548, 193);
+            this.listView2.Size = new System.Drawing.Size(627, 193);
             this.listView2.TabIndex = 65;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
@@ -435,6 +438,11 @@
             this.emailacheteur.Text = "email";
             this.emailacheteur.Width = 118;
             // 
+            // telephoneClient
+            // 
+            this.telephoneClient.Text = "telephone";
+            this.telephoneClient.Width = 81;
+            // 
             // adresseacheteur
             // 
             this.adresseacheteur.Text = "adresse";
@@ -449,11 +457,6 @@
             // 
             this.villeacheteur.Text = "ville";
             this.villeacheteur.Width = 90;
-            // 
-            // telephoneClient
-            // 
-            this.telephoneClient.Text = "telephone";
-            this.telephoneClient.Width = 81;
             // 
             // VueCommerciaux
             // 
