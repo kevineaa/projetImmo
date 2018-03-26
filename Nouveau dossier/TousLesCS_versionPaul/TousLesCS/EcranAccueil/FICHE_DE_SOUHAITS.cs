@@ -23,6 +23,7 @@ namespace EcranAccueil
     
         public short IDFICHESOUHAITS { get; set; }
         public short IDACHETEUR { get; set; }
+        public string STATUT { get; set; }
         public string VILLE { get; set; }
         public Nullable<int> SURFACE_PARCELLE { get; set; }
         public Nullable<int> SURFACE_HABITABLE { get; set; }

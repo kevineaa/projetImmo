@@ -28,6 +28,8 @@ namespace EcranAccueil
         public int TÉLÉPHONE_FIXE { get; set; }
         public Nullable<int> TÉLÉPHONE_MOBILE { get; set; }
         public string EMAIL { get; set; }
+        public int CODE_POSTAL { get; set; }
+        public System.DateTime DATE_CREATION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BIEN> BIEN { get; set; }

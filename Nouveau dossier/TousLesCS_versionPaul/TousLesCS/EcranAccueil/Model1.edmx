@@ -10,13 +10,16 @@
             <PropertyRef Name="IDACHETEUR" />
           </Key>
           <Property Name="IDACHETEUR" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDCOMMERCIAL" Type="tinyint" Nullable="false" />
+          <Property Name="IDCOMMERCIAL" Type="smallint" Nullable="false" />
           <Property Name="IDVILLE" Type="int" Nullable="false" />
           <Property Name="NOM_ACHETEUR" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="PRENOM_ACHETEUR" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="ADRESSE" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="TÉLÉPHONE" Type="int" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
+          <Property Name="TÉLÉPHONE_MOBILE" Type="int" Nullable="false" />
+          <Property Name="DATE_CREATION" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="BIEN">
           <Key>
@@ -34,6 +37,7 @@
           <Property Name="CAVE" Type="bit" Nullable="false" />
           <Property Name="PRIX_SOUHAITÉ" Type="int" Nullable="false" />
           <Property Name="ADRESSE_BIEN" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
           <Property Name="DATE_MISEENVENTE" Type="datetime" Nullable="false" />
           <Property Name="STATUT" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="ZONE_DE_SAISIE" Type="char" MaxLength="32" />
@@ -43,7 +47,7 @@
           <Key>
             <PropertyRef Name="IDCOMMERCIAL" />
           </Key>
-          <Property Name="IDCOMMERCIAL" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCOMMERCIAL" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOM_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="PRENOM_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="TÉLÉPHONE_FIXE_PRO" Type="int" Nullable="false" />
@@ -58,6 +62,7 @@
           </Key>
           <Property Name="IDFICHESOUHAITS" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDACHETEUR" Type="smallint" Nullable="false" />
+          <Property Name="STATUT" Type="char" MaxLength="32" />
           <Property Name="VILLE" Type="char" MaxLength="32" />
           <Property Name="SURFACE_PARCELLE" Type="int" />
           <Property Name="SURFACE_HABITABLE" Type="int" />
@@ -92,16 +97,6 @@
           <Property Name="IDVILLE" Type="int" Nullable="false" />
           <Property Name="IDFICHESOUHAITS" Type="smallint" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="VENDEUR">
           <Key>
             <PropertyRef Name="IDVENDEUR" />
@@ -114,6 +109,8 @@
           <Property Name="TÉLÉPHONE_FIXE" Type="int" Nullable="false" />
           <Property Name="TÉLÉPHONE_MOBILE" Type="int" />
           <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
+          <Property Name="DATE_CREATION" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="VILLE">
           <Key>
@@ -123,13 +120,6 @@
           <Property Name="NOM_VILLE" Type="char" MaxLength="38" Nullable="false" />
           <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin.dbo.VILLES' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
-        <EntityType Name="VILLES">
-          <Property Name="Colonne 0" Type="varchar" MaxLength="5" />
-          <Property Name="Colonne 1" Type="varchar" MaxLength="28" />
-          <Property Name="Colonne 2" Type="varchar" MaxLength="7" />
-        </EntityType>-->
         <Association Name="FK_ACHETEUR_COMMERCIAL">
           <End Role="COMMERCIAL" Type="Self.COMMERCIAL" Multiplicity="1" />
           <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="*" />
@@ -270,7 +260,6 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           <EntitySet Name="PROPOSITION_VISITE" EntityType="Self.PROPOSITION_VISITE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RDV" EntityType="Self.RDV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RECHERCHE_DANS" EntityType="Self.RECHERCHE_DANS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VILLE" EntityType="Self.VILLE" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ACHETEUR_COMMERCIAL" Association="Self.FK_ACHETEUR_COMMERCIAL">
@@ -328,13 +317,16 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
             <PropertyRef Name="IDACHETEUR" />
           </Key>
           <Property Name="IDACHETEUR" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDCOMMERCIAL" Type="Byte" Nullable="false" />
+          <Property Name="IDCOMMERCIAL" Type="Int16" Nullable="false" />
           <Property Name="IDVILLE" Type="Int32" Nullable="false" />
           <Property Name="NOM_ACHETEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="PRENOM_ACHETEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ADRESSE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TÉLÉPHONE" Type="Int32" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
+          <Property Name="TÉLÉPHONE_MOBILE" Type="Int32" Nullable="false" />
+          <Property Name="DATE_CREATION" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="COMMERCIAL" Relationship="Self.FK_ACHETEUR_COMMERCIAL" FromRole="ACHETEUR" ToRole="COMMERCIAL" />
           <NavigationProperty Name="VILLE" Relationship="Self.FK_ACHETEUR_VILLE" FromRole="ACHETEUR" ToRole="VILLE" />
           <NavigationProperty Name="FICHE_DE_SOUHAITS" Relationship="Self.FK_FICHE_DE_SOUHAITS_ACHETEUR" FromRole="ACHETEUR" ToRole="FICHE_DE_SOUHAITS" />
@@ -355,6 +347,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           <Property Name="CAVE" Type="Boolean" Nullable="false" />
           <Property Name="PRIX_SOUHAITÉ" Type="Int32" Nullable="false" />
           <Property Name="ADRESSE_BIEN" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
           <Property Name="DATE_MISEENVENTE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="STATUT" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ZONE_DE_SAISIE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
@@ -367,7 +360,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           <Key>
             <PropertyRef Name="IDCOMMERCIAL" />
           </Key>
-          <Property Name="IDCOMMERCIAL" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCOMMERCIAL" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOM_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="PRENOM_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TÉLÉPHONE_FIXE_PRO" Type="Int32" Nullable="false" />
@@ -383,6 +376,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           </Key>
           <Property Name="IDFICHESOUHAITS" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDACHETEUR" Type="Int16" Nullable="false" />
+          <Property Name="STATUT" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="VILLE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Name="SURFACE_PARCELLE" Type="Int32" />
           <Property Name="SURFACE_HABITABLE" Type="Int32" />
@@ -416,16 +410,6 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           <Property Name="IDVISITE" Type="Int16" Nullable="false" />
           <NavigationProperty Name="PROPOSITION_VISITE" Relationship="Self.FK_RDV_PROPOSITION_VISITE" FromRole="RDV" ToRole="PROPOSITION_VISITE" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="VENDEUR">
           <Key>
             <PropertyRef Name="IDVENDEUR" />
@@ -438,6 +422,8 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           <Property Name="TÉLÉPHONE_FIXE" Type="Int32" Nullable="false" />
           <Property Name="TÉLÉPHONE_MOBILE" Type="Int32" />
           <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
+          <Property Name="DATE_CREATION" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="BIEN" Relationship="Self.FK_BIEN_VENDEUR" FromRole="VENDEUR" ToRole="BIEN" />
           <NavigationProperty Name="VILLE" Relationship="Self.FK_VENDEUR_VILLE" FromRole="VENDEUR" ToRole="VILLE" />
         </EntityType>
@@ -565,14 +551,13 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
           <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="*" />
           <End Role="VILLE" Type="Self.VILLE" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="EnfinEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EnfinEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" />
           <EntitySet Name="BIEN" EntityType="Self.BIEN" />
           <EntitySet Name="COMMERCIAL" EntityType="Self.COMMERCIAL" />
           <EntitySet Name="FICHE_DE_SOUHAITS" EntityType="Self.FICHE_DE_SOUHAITS" />
           <EntitySet Name="PROPOSITION_VISITE" EntityType="Self.PROPOSITION_VISITE" />
           <EntitySet Name="RDV" EntityType="Self.RDV" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" />
           <EntitySet Name="VILLE" EntityType="Self.VILLE" />
           <AssociationSet Name="FK_ACHETEUR_COMMERCIAL" Association="Self.FK_ACHETEUR_COMMERCIAL">
@@ -621,7 +606,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EnfinModelStoreContainer" CdmEntityContainer="EnfinEntities2">
+        <EntityContainerMapping StorageEntityContainer="EnfinModelStoreContainer" CdmEntityContainer="EnfinEntities1">
           <EntitySetMapping Name="ACHETEUR">
             <EntityTypeMapping TypeName="EnfinModel.ACHETEUR">
               <MappingFragment StoreEntitySet="ACHETEUR">
@@ -633,6 +618,9 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
                 <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="TÉLÉPHONE" ColumnName="TÉLÉPHONE" />
+                <ScalarProperty Name="CODE_POSTAL" ColumnName="CODE_POSTAL" />
+                <ScalarProperty Name="TÉLÉPHONE_MOBILE" ColumnName="TÉLÉPHONE_MOBILE" />
+                <ScalarProperty Name="DATE_CREATION" ColumnName="DATE_CREATION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -651,6 +639,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
                 <ScalarProperty Name="CAVE" ColumnName="CAVE" />
                 <ScalarProperty Name="PRIX_SOUHAITÉ" ColumnName="PRIX_SOUHAITÉ" />
                 <ScalarProperty Name="ADRESSE_BIEN" ColumnName="ADRESSE_BIEN" />
+                <ScalarProperty Name="CODE_POSTAL" ColumnName="CODE_POSTAL" />
                 <ScalarProperty Name="DATE_MISEENVENTE" ColumnName="DATE_MISEENVENTE" />
                 <ScalarProperty Name="STATUT" ColumnName="STATUT" />
                 <ScalarProperty Name="ZONE_DE_SAISIE" ColumnName="ZONE_DE_SAISIE" />
@@ -677,6 +666,7 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
               <MappingFragment StoreEntitySet="FICHE_DE_SOUHAITS">
                 <ScalarProperty Name="IDFICHESOUHAITS" ColumnName="IDFICHESOUHAITS" />
                 <ScalarProperty Name="IDACHETEUR" ColumnName="IDACHETEUR" />
+                <ScalarProperty Name="STATUT" ColumnName="STATUT" />
                 <ScalarProperty Name="VILLE" ColumnName="VILLE" />
                 <ScalarProperty Name="SURFACE_PARCELLE" ColumnName="SURFACE_PARCELLE" />
                 <ScalarProperty Name="SURFACE_HABITABLE" ColumnName="SURFACE_HABITABLE" />
@@ -707,17 +697,6 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="EnfinModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VENDEUR">
             <EntityTypeMapping TypeName="EnfinModel.VENDEUR">
               <MappingFragment StoreEntitySet="VENDEUR">
@@ -729,6 +708,8 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
                 <ScalarProperty Name="TÉLÉPHONE_FIXE" ColumnName="TÉLÉPHONE_FIXE" />
                 <ScalarProperty Name="TÉLÉPHONE_MOBILE" ColumnName="TÉLÉPHONE_MOBILE" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CODE_POSTAL" ColumnName="CODE_POSTAL" />
+                <ScalarProperty Name="DATE_CREATION" ColumnName="DATE_CREATION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

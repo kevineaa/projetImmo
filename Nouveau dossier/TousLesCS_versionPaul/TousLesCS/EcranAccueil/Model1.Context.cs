@@ -13,10 +13,10 @@ namespace EcranAccueil
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EnfinEntities2 : DbContext
+    public partial class EnfinEntities1 : DbContext
     {
-        public EnfinEntities2()
-            : base("name=EnfinEntities2")
+        public EnfinEntities1()
+            : base("name=EnfinEntities1")
         {
         }
     
@@ -31,7 +31,6 @@ namespace EcranAccueil
         public virtual DbSet<FICHE_DE_SOUHAITS> FICHE_DE_SOUHAITS { get; set; }
         public virtual DbSet<PROPOSITION_VISITE> PROPOSITION_VISITE { get; set; }
         public virtual DbSet<RDV> RDV { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<VENDEUR> VENDEUR { get; set; }
         public virtual DbSet<VILLE> VILLE { get; set; }
     }

@@ -32,6 +32,7 @@ namespace EcranAccueil
         public bool CAVE { get; set; }
         public int PRIX_SOUHAITÉ { get; set; }
         public string ADRESSE_BIEN { get; set; }
+        public int CODE_POSTAL { get; set; }
         public System.DateTime DATE_MISEENVENTE { get; set; }
         public string STATUT { get; set; }
         public string ZONE_DE_SAISIE { get; set; }

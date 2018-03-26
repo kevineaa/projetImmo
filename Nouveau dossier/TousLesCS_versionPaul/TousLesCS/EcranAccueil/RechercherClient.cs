@@ -13,7 +13,7 @@ namespace EcranAccueil
     public partial class RechercherClient : Form
     {
 
-        public static EnfinEntities2 modeleBase = new EnfinEntities2();
+        public static EnfinEntities1 modeleBase = new EnfinEntities1();
         TypeClient typeClientChoisi = TypeClient.ACHETEUR;
         int ID_client_selectionne;
         List<ACHETEUR> acheteurs;

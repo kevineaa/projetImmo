@@ -21,13 +21,16 @@ namespace EcranAccueil
         }
     
         public short IDACHETEUR { get; set; }
-        public byte IDCOMMERCIAL { get; set; }
+        public short IDCOMMERCIAL { get; set; }
         public int IDVILLE { get; set; }
         public string NOM_ACHETEUR { get; set; }
         public string PRENOM_ACHETEUR { get; set; }
         public string ADRESSE { get; set; }
         public string EMAIL { get; set; }
         public int TÉLÉPHONE { get; set; }
+        public int CODE_POSTAL { get; set; }
+        public int TÉLÉPHONE_MOBILE { get; set; }
+        public System.DateTime DATE_CREATION { get; set; }
     
         public virtual COMMERCIAL COMMERCIAL { get; set; }
         public virtual VILLE VILLE { get; set; }

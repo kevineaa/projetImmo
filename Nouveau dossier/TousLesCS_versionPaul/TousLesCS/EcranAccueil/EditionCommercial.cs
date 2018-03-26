@@ -38,7 +38,11 @@ namespace EcranAccueil
             modeleBase.SaveChanges();
         }
 
-        public static EnfinEntities2 modeleBase = new EnfinEntities2();
+        public static EnfinEntities1 modeleBase = new EnfinEntities1();
 
+        private void EditionCommercial_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

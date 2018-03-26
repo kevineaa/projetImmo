@@ -20,7 +20,7 @@ namespace EcranAccueil
             this.ACHETEUR = new HashSet<ACHETEUR>();
         }
     
-        public byte IDCOMMERCIAL { get; set; }
+        public short IDCOMMERCIAL { get; set; }
         public string NOM_COMMERCIAL { get; set; }
         public string PRENOM_COMMERCIAL { get; set; }
         public int TÉLÉPHONE_FIXE_PRO { get; set; }

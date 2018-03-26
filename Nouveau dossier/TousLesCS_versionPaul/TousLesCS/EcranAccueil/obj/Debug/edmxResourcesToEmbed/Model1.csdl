@@ -5,13 +5,16 @@
       <PropertyRef Name="IDACHETEUR" />
     </Key>
     <Property Name="IDACHETEUR" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDCOMMERCIAL" Type="Byte" Nullable="false" />
+    <Property Name="IDCOMMERCIAL" Type="Int16" Nullable="false" />
     <Property Name="IDVILLE" Type="Int32" Nullable="false" />
     <Property Name="NOM_ACHETEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="PRENOM_ACHETEUR" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="ADRESSE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TÉLÉPHONE" Type="Int32" Nullable="false" />
+    <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
+    <Property Name="TÉLÉPHONE_MOBILE" Type="Int32" Nullable="false" />
+    <Property Name="DATE_CREATION" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="COMMERCIAL" Relationship="Self.FK_ACHETEUR_COMMERCIAL" FromRole="ACHETEUR" ToRole="COMMERCIAL" />
     <NavigationProperty Name="VILLE" Relationship="Self.FK_ACHETEUR_VILLE" FromRole="ACHETEUR" ToRole="VILLE" />
     <NavigationProperty Name="FICHE_DE_SOUHAITS" Relationship="Self.FK_FICHE_DE_SOUHAITS_ACHETEUR" FromRole="ACHETEUR" ToRole="FICHE_DE_SOUHAITS" />
@@ -32,6 +35,7 @@
     <Property Name="CAVE" Type="Boolean" Nullable="false" />
     <Property Name="PRIX_SOUHAITÉ" Type="Int32" Nullable="false" />
     <Property Name="ADRESSE_BIEN" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
     <Property Name="DATE_MISEENVENTE" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="STATUT" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="ZONE_DE_SAISIE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
@@ -44,7 +48,7 @@
     <Key>
       <PropertyRef Name="IDCOMMERCIAL" />
     </Key>
-    <Property Name="IDCOMMERCIAL" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCOMMERCIAL" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NOM_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="PRENOM_COMMERCIAL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TÉLÉPHONE_FIXE_PRO" Type="Int32" Nullable="false" />
@@ -60,6 +64,7 @@
     </Key>
     <Property Name="IDFICHESOUHAITS" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDACHETEUR" Type="Int16" Nullable="false" />
+    <Property Name="STATUT" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
     <Property Name="VILLE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
     <Property Name="SURFACE_PARCELLE" Type="Int32" />
     <Property Name="SURFACE_HABITABLE" Type="Int32" />
@@ -93,16 +98,6 @@
     <Property Name="IDVISITE" Type="Int16" Nullable="false" />
     <NavigationProperty Name="PROPOSITION_VISITE" Relationship="Self.FK_RDV_PROPOSITION_VISITE" FromRole="RDV" ToRole="PROPOSITION_VISITE" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="VENDEUR">
     <Key>
       <PropertyRef Name="IDVENDEUR" />
@@ -115,6 +110,8 @@
     <Property Name="TÉLÉPHONE_FIXE" Type="Int32" Nullable="false" />
     <Property Name="TÉLÉPHONE_MOBILE" Type="Int32" />
     <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CODE_POSTAL" Type="Int32" Nullable="false" />
+    <Property Name="DATE_CREATION" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="BIEN" Relationship="Self.FK_BIEN_VENDEUR" FromRole="VENDEUR" ToRole="BIEN" />
     <NavigationProperty Name="VILLE" Relationship="Self.FK_VENDEUR_VILLE" FromRole="VENDEUR" ToRole="VILLE" />
   </EntityType>
@@ -242,14 +239,13 @@
     <End Role="FICHE_DE_SOUHAITS" Type="Self.FICHE_DE_SOUHAITS" Multiplicity="*" />
     <End Role="VILLE" Type="Self.VILLE" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="EnfinEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="EnfinEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ACHETEUR" EntityType="Self.ACHETEUR" />
     <EntitySet Name="BIEN" EntityType="Self.BIEN" />
     <EntitySet Name="COMMERCIAL" EntityType="Self.COMMERCIAL" />
     <EntitySet Name="FICHE_DE_SOUHAITS" EntityType="Self.FICHE_DE_SOUHAITS" />
     <EntitySet Name="PROPOSITION_VISITE" EntityType="Self.PROPOSITION_VISITE" />
     <EntitySet Name="RDV" EntityType="Self.RDV" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" />
     <EntitySet Name="VILLE" EntityType="Self.VILLE" />
     <AssociationSet Name="FK_ACHETEUR_COMMERCIAL" Association="Self.FK_ACHETEUR_COMMERCIAL">

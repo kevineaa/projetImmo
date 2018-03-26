@@ -5,13 +5,16 @@
       <PropertyRef Name="IDACHETEUR" />
     </Key>
     <Property Name="IDACHETEUR" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDCOMMERCIAL" Type="tinyint" Nullable="false" />
+    <Property Name="IDCOMMERCIAL" Type="smallint" Nullable="false" />
     <Property Name="IDVILLE" Type="int" Nullable="false" />
     <Property Name="NOM_ACHETEUR" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="PRENOM_ACHETEUR" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="ADRESSE" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="TÉLÉPHONE" Type="int" Nullable="false" />
+    <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
+    <Property Name="TÉLÉPHONE_MOBILE" Type="int" Nullable="false" />
+    <Property Name="DATE_CREATION" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="BIEN">
     <Key>
@@ -29,6 +32,7 @@
     <Property Name="CAVE" Type="bit" Nullable="false" />
     <Property Name="PRIX_SOUHAITÉ" Type="int" Nullable="false" />
     <Property Name="ADRESSE_BIEN" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
     <Property Name="DATE_MISEENVENTE" Type="datetime" Nullable="false" />
     <Property Name="STATUT" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="ZONE_DE_SAISIE" Type="char" MaxLength="32" />
@@ -38,7 +42,7 @@
     <Key>
       <PropertyRef Name="IDCOMMERCIAL" />
     </Key>
-    <Property Name="IDCOMMERCIAL" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCOMMERCIAL" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NOM_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="PRENOM_COMMERCIAL" Type="char" MaxLength="32" Nullable="false" />
     <Property Name="TÉLÉPHONE_FIXE_PRO" Type="int" Nullable="false" />
@@ -53,6 +57,7 @@
     </Key>
     <Property Name="IDFICHESOUHAITS" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDACHETEUR" Type="smallint" Nullable="false" />
+    <Property Name="STATUT" Type="char" MaxLength="32" />
     <Property Name="VILLE" Type="char" MaxLength="32" />
     <Property Name="SURFACE_PARCELLE" Type="int" />
     <Property Name="SURFACE_HABITABLE" Type="int" />
@@ -87,16 +92,6 @@
     <Property Name="IDVILLE" Type="int" Nullable="false" />
     <Property Name="IDFICHESOUHAITS" Type="smallint" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="VENDEUR">
     <Key>
       <PropertyRef Name="IDVENDEUR" />
@@ -109,6 +104,8 @@
     <Property Name="TÉLÉPHONE_FIXE" Type="int" Nullable="false" />
     <Property Name="TÉLÉPHONE_MOBILE" Type="int" />
     <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
+    <Property Name="DATE_CREATION" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="VILLE">
     <Key>
@@ -118,13 +115,6 @@
     <Property Name="NOM_VILLE" Type="char" MaxLength="38" Nullable="false" />
     <Property Name="CODE_POSTAL" Type="int" Nullable="false" />
   </EntityType>
-  <!--Erreurs détectées durant la génération :
-avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin.dbo.VILLES' ; en outre, aucune clé primaire valide n'a pu être déduite. Cette table/vue a été exclue. Pour utiliser l'entité, vous devez passer en revue votre schéma, ajouter les clés appropriées et supprimer le commentaire associé.
-        <EntityType Name="VILLES">
-          <Property Name="Colonne 0" Type="varchar" MaxLength="5" />
-          <Property Name="Colonne 1" Type="varchar" MaxLength="28" />
-          <Property Name="Colonne 2" Type="varchar" MaxLength="7" />
-        </EntityType>-->
   <Association Name="FK_ACHETEUR_COMMERCIAL">
     <End Role="COMMERCIAL" Type="Self.COMMERCIAL" Multiplicity="1" />
     <End Role="ACHETEUR" Type="Self.ACHETEUR" Multiplicity="*" />
@@ -265,7 +255,6 @@ avertissement 6013: Aucune clé primaire n'est définie pour la table/vue 'Enfin
     <EntitySet Name="PROPOSITION_VISITE" EntityType="Self.PROPOSITION_VISITE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RDV" EntityType="Self.RDV" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RECHERCHE_DANS" EntityType="Self.RECHERCHE_DANS" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VENDEUR" EntityType="Self.VENDEUR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VILLE" EntityType="Self.VILLE" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ACHETEUR_COMMERCIAL" Association="Self.FK_ACHETEUR_COMMERCIAL">

@@ -19,7 +19,7 @@ namespace EcranAccueil
         string actifs = "ACTIF";
         string status = "ACTIF";
 
-        public EnfinEntities2 enfin = new EnfinEntities2();
+        public EnfinEntities1 enfin = new EnfinEntities1();
 
         public VueCommerciaux()
         {
@@ -221,6 +221,7 @@ namespace EcranAccueil
 
         private void button4_Click(object sender, EventArgs e)
         {
+            sauvegarde();
             Accueil accueil = new Accueil();
             accueil.Show();
             this.Hide();
@@ -247,8 +248,51 @@ namespace EcranAccueil
             }
 
         }
+        private bool verifier_champs()
+        {
+            bool valide = true;
+
+            string message_erreur = "Recherche impossible  \nVeuillez renseigner les champs vides \n";
+
+            // switch()
+            if (nom.Text != "" || prenom.Text != "" || email.Text != "" || portablePro.Text != "" || fixePro.Text != "" || telephonePerso.Text != "" || email.Text != "")
+            {
+
+                if (nom.Text == "" || prenom.Text == "" || email.Text == "" || portablePro.Text == "" || fixePro.Text == "" || telephonePerso.Text == "" || email.Text == "")
+                {
+                    // message_erreur += " --> Budget à définir \n";
+                    valide = false;
+                }
+         /*   if( prenom.Text == "")
+                {
+                     message_erreur += " --> prenom \n";
+                    valide = false;
+                }
+                */
+            }
+
+            /*      if (villes_selectionnees.Count() == 0)
+                  {
+                      message_erreur += " --> Aucune ville n'est sélectionnée.";
+                      valide = false;
+                  }
+
+          */
+            if (!valide)
+            {
+                MessageBox.Show(message_erreur);
+
+            }
+            
+            return valide;
+
+
+        }
+
         private void sauvegarde()
         {
+            if (!verifier_champs()) return;
+
             IQueryable<COMMERCIAL> ca = (from x in enfin.COMMERCIAL
                                          where x.NOM_COMMERCIAL.StartsWith(nom.Text)
                                          select x);
@@ -390,25 +434,29 @@ namespace EcranAccueil
             {
                 int phone = Int32.Parse(listView2.SelectedItems[i].SubItems[3].Text);
                 int postal = Int32.Parse(listView2.SelectedItems[i].SubItems[5].Text);
-                string nom = listView2.SelectedItems[i].SubItems[0].Text.ToString(), prenom = listView2.SelectedItems[i].SubItems[1].Text.ToString()
-                   , mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
-                   ville = listView2.SelectedItems[i].SubItems[6].Text.ToString();
+                string nom = listView2.SelectedItems[i].SubItems[0].Text.ToString(), prenom = listView2.SelectedItems[i].SubItems[1].Text.ToString(),
+                   mail = listView2.SelectedItems[i].SubItems[2].Text.ToString(), adresse = listView2.SelectedItems[i].SubItems[4].Text.ToString(),
+                   ville = listView2.SelectedItems[i].SubItems[6].Text.ToString(),date = listView2.SelectedItems[i].SubItems[7].Text.ToString();
+                
                 acheteur = (from v in enfin.ACHETEUR
                             where (v.NOM_ACHETEUR.ToString().StartsWith(nom) &&
                                (v.PRENOM_ACHETEUR.StartsWith(prenom)) &&
-                                (v.TÉLÉPHONE.Equals(phone)) &&
-                                  (v.EMAIL.StartsWith(mail)) &&
-                                 (v.ADRESSE.StartsWith(adresse)) &&
-                                (v.VILLE.CODE_POSTAL.Equals(postal)) &&
-                                      (v.VILLE.NOM_VILLE.StartsWith(ville)))
+                               (v.TÉLÉPHONE.Equals(phone)) &&
+                               (v.EMAIL.StartsWith(mail)) &&
+                               (v.ADRESSE.StartsWith(adresse)) &&
+                               (v.VILLE.CODE_POSTAL.Equals(postal)) &&
+                               (v.VILLE.NOM_VILLE.StartsWith(ville))&&
+                               (v.DATE_CREATION.ToString().StartsWith(date))
+
+                               )
 
                             select v).First();
 
             }
             
 
-            AjoutClient ajoutClient = new AjoutClient();
-                // AjoutClient ajoutClient = new AjoutClient(acheteur);
+          //  AjoutClient ajoutClient = new AjoutClient();
+                 AjoutClient ajoutClient = new AjoutClient(acheteur);
 
                 ajoutClient.Show() ;
                 this.Hide();
@@ -464,9 +512,12 @@ namespace EcranAccueil
 
                         lvi.SubItems.Add(acheteur.ADRESSE);
 
-                        lvi.SubItems.Add(acheteur.VILLE.CODE_POSTAL.ToString());
-                        lvi.SubItems.Add(acheteur.VILLE.NOM_VILLE.ToString());
-                        
+                        lvi.SubItems.Add(acheteur.CODE_POSTAL.ToString());
+                        lvi.SubItems.Add(acheteur .VILLE.ToString());
+                        lvi.SubItems.Add(acheteur.DATE_CREATION.ToString());
+
+                     //   ville = listView2.SelectedItems[i].SubItems[6].Text.ToString(),date = listView2.SelectedItems[i].SubItems[7].Text.ToString();
+
                         listView2.Items.Add(lvi);
                     }
                 }

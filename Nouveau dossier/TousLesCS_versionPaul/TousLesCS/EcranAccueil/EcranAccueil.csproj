@@ -161,9 +161,6 @@
     <Compile Include="RechercherClient.Designer.cs">
       <DependentUpon>RechercherClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="VENDEUR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

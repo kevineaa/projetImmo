@@ -71,6 +71,7 @@
             this.adresseacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.codePostale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.villeacheteur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DateCreation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             portablesPro = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
@@ -414,7 +415,8 @@
             this.telephoneClient,
             this.adresseacheteur,
             this.codePostale,
-            this.villeacheteur});
+            this.villeacheteur,
+            this.DateCreation});
             this.listView2.Location = new System.Drawing.Point(644, 139);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
@@ -457,6 +459,10 @@
             // 
             this.villeacheteur.Text = "ville";
             this.villeacheteur.Width = 90;
+            // 
+            // DateCreation
+            // 
+            this.DateCreation.Text = "Date Creation";
             // 
             // VueCommerciaux
             // 
@@ -545,5 +551,6 @@
         private System.Windows.Forms.ColumnHeader villeacheteur;
         private System.Windows.Forms.ColumnHeader codePostale;
         private System.Windows.Forms.ColumnHeader telephoneClient;
+        private System.Windows.Forms.ColumnHeader DateCreation;
     }
 }

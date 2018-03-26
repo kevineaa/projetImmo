@@ -4,16 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="da7f39b1e4e6495fb342122c4e276607" Name="Diagram1">
+      <Diagram DiagramId="e7b227d27ba841e4b7692719673344b7" Name="Diagram1">
         <EntityTypeShape EntityType="EnfinModel.ACHETEUR" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.BIEN" Width="1.5" PointX="12" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.COMMERCIAL" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.FICHE_DE_SOUHAITS" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.PROPOSITION_VISITE" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.RDV" Width="1.5" PointX="9.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.VENDEUR" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnfinModel.VILLE" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.BIEN" Width="1.5" PointX="12" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.COMMERCIAL" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.FICHE_DE_SOUHAITS" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.PROPOSITION_VISITE" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.RDV" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.VENDEUR" Width="1.5" PointX="9.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnfinModel.VILLE" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
         <AssociationConnector Association="EnfinModel.FK_ACHETEUR_COMMERCIAL" ManuallyRouted="false" />
         <AssociationConnector Association="EnfinModel.FK_ACHETEUR_VILLE" ManuallyRouted="false" />
         <AssociationConnector Association="EnfinModel.FK_FICHE_DE_SOUHAITS_ACHETEUR" ManuallyRouted="false" />
